@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<!-- saved from url=(0097)file:///D:/Ceintures/Ceintures%20de%20comportement%20%E2%80%94%20%C3%89cole%20Henri%20Wallon.html -->
+<html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Ceintures de comportement — École Henri Wallon</title>
+<style>
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f2ec; margin: 0; padding: 24px; color: #2c2c2a; }
+  h1 { text-align: center; font-size: 24px; font-weight: 600; margin-bottom: 4px; }
+  .subtitle { text-align: center; color: #5f5e5a; margin-bottom: 22px; font-size: 14px; }
+  .wrap { max-width: 940px; margin: 0 auto; }
+
+  .tabs { display: flex; gap: 8px; justify-content: center; margin-bottom: 20px; }
+  .tab-btn { border: 1px solid #d3d1c7; background: #fff; cursor: pointer; padding: 8px 18px; border-radius: 999px; font-size: 13px; font-weight: 600; color: #5f5e5a; }
+  .tab-btn.active { background: #2c2c2a; color: #fff; border-color: #2c2c2a; }
+
+  .panel { background: #fff; border-radius: 14px; padding: 20px 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+
+  .law-row { display: flex; align-items: stretch; margin-bottom: 6px; border-radius: 8px; overflow: hidden; }
+  .law-num { flex-shrink: 0; width: 60px; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 13px; }
+  .law-body { flex: 1; padding: 8px 12px; background: #faf9f5; }
+  .law-main { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+  .law-sub { font-size: 12.5px; color: #b45d4a; }
+
+  .belts { display: flex; gap: 8px; justify-content: center; margin-bottom: 20px; flex-wrap: wrap; }
+  .belt-btn { cursor: pointer; padding: 10px 16px; border-radius: 999px; font-weight: 600; font-size: 13px; opacity: 0.55; transition: all 0.2s; }
+  .belt-btn.active { opacity: 1; transform: scale(1.08); box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
+  .blanche { background: #f2f2f2; color: #2c2c2a; border: 1.5px solid #b4b2a9; }
+  .jaune   { background: #FAFA69; color: #2c2c2a; border: none; }
+  .orange  { background: #FFBC71; color: #2c2c2a; border: none; }
+  .verte   { background: #6AB079; color: #12331b; border: none; }
+  .bleue   { background: #83ABE6; color: #0c2c53; border: none; }
+  .marron  { background: #8A655C; color: #fff; border: none; }
+
+  .cols { display: flex; gap: 24px; flex-wrap: wrap; }
+  .col { flex: 1; min-width: 260px; }
+  .col-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.03em; color: #999; font-weight: 600; margin-bottom: 8px; }
+  ul.plain { margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6; }
+
+  .hidden { display: none; }
+  .progress-bar { height: 8px; border-radius: 4px; background: #e5e3da; overflow: hidden; margin-bottom: 18px; }
+  .progress-fill { height: 100%; transition: width 0.3s; }
+
+  .counters-wrap { overflow-x: auto; border-radius: 14px; border: 0.5px solid #e5e3da; }
+  .counters-table { border-collapse: separate; border-spacing: 0; width: 100%; min-width: 760px; }
+  .counters-table th { background: #2c2c2a; color: #fff; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; padding: 12px 8px; text-align: center; }
+  .counters-table th:first-child { text-align: left; padding-left: 18px; border-radius: 12px 0 0 0; }
+  .counters-table th:last-child { border-radius: 0 12px 0 0; background: #1c1c1a; }
+  .counters-table td { padding: 10px 8px; text-align: center; border-bottom: 0.5px solid #eeece5; }
+  .counters-table tr:last-child td { border-bottom: none; }
+  .belt-cell { display: flex; align-items: center; gap: 10px; padding-left: 14px !important; text-align: left !important; font-weight: 700; font-size: 13.5px; white-space: nowrap; }
+  .belt-dot { width: 16px; height: 16px; border-radius: 50%; flex-shrink: 0; }
+  .cell-counter { display: inline-flex; align-items: center; gap: 6px; background: #f6f5f0; border-radius: 999px; padding: 3px; }
+  .cell-counter button { width: 24px; height: 24px; border-radius: 50%; border: none; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,0.12); font-size: 14px; font-weight: 700; cursor: pointer; line-height: 1; color: #2c2c2a; }
+  .cell-counter button:active { transform: scale(0.9); }
+  .cell-counter .cell-value { min-width: 20px; font-size: 14px; font-weight: 600; }
+  .cell-value-input { min-width: 30px; width: 34px; font-size: 14px; font-weight: 600; text-align: center; border: none; background: transparent; color: #2c2c2a; padding: 0; -moz-appearance: textfield; }
+  .cell-value-input::-webkit-outer-spin-button, .cell-value-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .cell-value-input:focus { outline: 1.5px solid #2c2c2a; border-radius: 4px; background: #fff; }
+  .total-cell { font-size: 17px; font-weight: 700; background: #faf9f5; }
+  .grand-total-row td { background: #2c2c2a; color: #fff; font-weight: 700; font-size: 14px; padding: 12px 8px; border-radius: 0 0 12px 12px; }
+  .grand-total-row td:first-child { padding-left: 18px; text-align: left; border-radius: 0 0 0 12px; }
+  .grand-total-row td:last-child { border-radius: 0 0 12px 0; font-size: 17px; }
+
+  .counter-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-top: 18px; border-top: 0.5px solid #e5e3da; padding-top: 16px; }
+  .save-btn { background: #2c2c2a; color: #fff; border: none; padding: 10px 20px; border-radius: 999px; font-size: 13px; font-weight: 600; cursor: pointer; }
+  .save-btn:active { transform: scale(0.97); }
+  .last-updated { font-size: 12.5px; color: #999; }
+  .save-status { font-size: 12.5px; color: #639922; min-height: 16px; }
+
+  .info-text p { font-size: 14.5px; line-height: 1.7; margin: 0 0 14px; }
+  .info-text h3 { font-size: 15px; font-weight: 600; margin: 20px 0 8px; }
+  .info-text .quote { font-style: italic; color: #5f5e5a; }
+
+  .charts-section { margin-top: 26px; border-top: 0.5px solid #e5e3da; padding-top: 20px; }
+  .charts-header-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .reset-btn { flex-shrink: 0; background: #fff; color: #b45d4a; border: 1.5px solid #b45d4a; padding: 8px 16px; border-radius: 999px; font-size: 12.5px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+  .reset-btn:hover { background: #b45d4a; color: #fff; }
+  .reset-btn:active { transform: scale(0.97); }
+  .charts-title { font-size: 16px; font-weight: 600; margin: 0 0 4px; }
+  .charts-subtitle { font-size: 12.5px; color: #999; margin: 0 0 16px; }
+  .chart-legend { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 16px; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: #5f5e5a; font-weight: 600; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+  .charts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+  .pie-charts-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+  .pie-charts-grid .chart-card { display: flex; flex-direction: column; align-items: center; }
+  .pie-charts-grid .chart-card svg { width: 120px; }
+  .chart-card { background: #faf9f5; border-radius: 12px; padding: 14px 16px 10px; border: 0.5px solid #eeece5; }
+  .chart-card.total-chart { grid-column: 1 / -1; background: #f6f5f0; }
+  .chart-card-title { font-size: 13px; font-weight: 700; margin: 0 0 8px; color: #2c2c2a; }
+  .chart-card svg { width: 100%; height: auto; display: block; }
+  .chart-empty { font-size: 12.5px; color: #999; padding: 20px 0; text-align: center; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Ceintures de comportement — École Henri Wallon</h1>
+  <div class="subtitle">« Plus je respecte les règles, plus on me fait confiance, plus j'ai de droits au sein de la classe et de l'école. »</div>
+
+  <div class="tabs">
+    <button class="tab-btn active" id="tabLois" onclick="showTab(&#39;lois&#39;)">Les 10 lois de l'école</button>
+    <button class="tab-btn" id="tabBelts" onclick="showTab(&#39;belts&#39;)">Devoirs et droits par ceinture</button>
+    <button class="tab-btn" id="tabCounters" onclick="showTab(&#39;counters&#39;)">Compteur des ceintures de comportement</button>
+    <button class="tab-btn" id="tabPercent" onclick="showTab(&#39;percent&#39;)">Pourcentages</button>
+    <button class="tab-btn" id="tabInfo" onclick="showTab(&#39;info&#39;)">Graphiques de suivi</button>
+  </div>
+
+  <div id="viewLois" class="panel">
+    <div id="loisList"><div class="law-row"><div class="law-num" style="background:#00B0F0;color:#fff">Loi 1</div><div class="law-body"><div class="law-main">Je dois être respectueux, honnête et poli avec tout le monde.</div><div class="law-sub">Personne n'a le droit de manquer de respect aux autres : insulter, mentir ou se moquer.</div></div></div><div class="law-row"><div class="law-num" style="background:#FFC000;color:#2c2c2a">Loi 2</div><div class="law-body"><div class="law-main">Je dois bien me comporter envers les autres et rejeter toute forme de violence.</div><div class="law-sub">Personne n'a le droit d'utiliser la violence : ne pas taper, ni pousser, ni se battre.</div></div></div><div class="law-row"><div class="law-num" style="background:#7030A0;color:#fff">Loi 3</div><div class="law-body"><div class="law-main">Je dois utiliser un langage approprié et m'exprimer avec gentillesse et bienveillance.</div><div class="law-sub">Personne n'a le droit d'utiliser des paroles blessantes envers les autres.</div></div></div><div class="law-row"><div class="law-num" style="background:#92D050;color:#12331b">Loi 4</div><div class="law-body"><div class="law-main">Je viens à l'école pour apprendre et faire du mieux possible.</div><div class="law-sub">Personne n'a le droit de me déranger, ni de m'empêcher d'apprendre.</div></div></div><div class="law-row"><div class="law-num" style="background:#F987FC;color:#2c2c2a">Loi 5</div><div class="law-body"><div class="law-main">Je dois me déplacer en marchant dans le calme et en silence.</div><div class="law-sub">Personne n'a le droit de se déplacer en courant, bruyamment ni sans autorisation.</div></div></div><div class="law-row"><div class="law-num" style="background:#0039AC;color:#fff">Loi 6</div><div class="law-body"><div class="law-main">Je dois avoir mon matériel et en prendre soin, tout comme de celui des autres.</div><div class="law-sub">Personne n'a le droit d'abîmer mon matériel, celui des autres ou celui de l'école.</div></div></div><div class="law-row"><div class="law-num" style="background:#FFFF00;color:#2c2c2a">Loi 7</div><div class="law-body"><div class="law-main">Je dois porter une tenue convenable et adaptée au cadre scolaire.</div><div class="law-sub">Personne n'a le droit de garder sa capuche ou sa casquette dans l'enceinte de l'école.</div></div></div><div class="law-row"><div class="law-num" style="background:#FF9900;color:#2c2c2a">Loi 8</div><div class="law-body"><div class="law-main">Je respecte mon école et la nature en gardant les lieux propres et en bon état.</div><div class="law-sub">Personne n'a le droit de salir ou dégrader l'école, de jeter des déchets par terre ou de gaspiller et jouer avec l'eau.</div></div></div><div class="law-row"><div class="law-num" style="background:#00B050;color:#fff">Loi 9</div><div class="law-body"><div class="law-main">Je dois soutenir et aider mes camarades autant que possible.</div><div class="law-sub">Personne n'a le droit d'ignorer quelqu'un en détresse.</div></div></div><div class="law-row"><div class="law-num" style="background:#FF0000;color:#fff">Loi 10</div><div class="law-body"><div class="law-main">L'école est laïque, tolérante et accepte les différences.</div><div class="law-sub">Personne n'a le droit d'imposer ses idées ou ses croyances ni de critiquer celles des autres.</div></div></div></div>
+  </div>
+
+  <div id="viewBelts" class="panel hidden">
+    <div class="belts" id="belts"><button class="belt-btn blanche active">Ceinture Blanche</button><button class="belt-btn jaune">Ceinture Jaune</button><button class="belt-btn orange">Ceinture Orange</button><button class="belt-btn verte">Ceinture Verte</button><button class="belt-btn bleue">Ceinture Bleue</button><button class="belt-btn marron">Ceinture Marron</button></div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width: 17%; background: rgb(180, 178, 169);"></div></div>
+    <h2 id="beltTitle" style="margin:0 0 12px;font-size:19px;">Ceinture Blanche</h2>
+    <div class="cols">
+      <div class="col">
+        <div class="col-label">Devoirs</div>
+        <ul class="plain" id="dutiesList"><li>Venir à l'heure à l'école</li><li>Faire de mon mieux pour être élève dans mon travail et dans ma relation aux autres</li><li>Se rendre calmement en classe</li></ul>
+      </div>
+      <div class="col">
+        <div class="col-label">Droits</div>
+        <ul class="plain" id="rightsList"><li>Participer à la vie de la classe</li><li>Donner mon avis en réunion</li><li>Avoir le droit de présenter une idée, un objet, un exposé à ma classe</li><li>Avoir accès aux caisses de jeux</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <div id="viewCounters" class="panel hidden">
+    <div class="counters-wrap">
+      <table class="counters-table">
+        <thead>
+          <tr>
+            <th>Ceinture</th>
+            <th>CP</th>
+            <th>CE1</th>
+            <th>CE2</th>
+            <th>CM1</th>
+            <th>CM2</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody id="countersBody"><tr><td class="belt-cell"><span class="belt-dot blanche"></span>Blanche</td><td><div class="cell-counter"><button onclick="changeCount(0,0,-1)" aria-label="Retirer un élève">−</button><input class="cell-value-input" id="count-0-0" type="number" inputmode="numeric" pattern="[0-9]*" min="0" step="1" value="6" onfocus="this.select()" oninput="setCount(0,0,this.value)" onchange="setCount(0,0,this.value)" aria-label="Nombre d’élèves"><button onclick="changeCount(0,0,1)" aria-label="Ajouter un élève">+</button></div></td><td><div class="cell-counter"><button onclick="changeCount(0,1,-1)" aria-label="Retirer un élève">−</button><input class="cell-value-input" id="count-0-1" type="number" inputmode="numeric" pattern="[0-9]*" min="0" step="1" value="5" onfocus="this.select()" oninput="setCount(0,1,this.value)" onchange="setCount(0,1,this.value)" aria-label="Nombre d’élèves"><button onclick="changeCount(0,1,1)" aria-label="Ajouter un élève">+</button></div></td><td><div class="cell-counter"><button onclick="changeCount(0,2,-1)" aria-label="Retirer un élève">−</button><input class="cell-value-input" id="count-0-2" type="number" inputmode="numeric" pattern="[0-9]*" min="0" step="1" value="2" onfocus="this.select()" oninput="setCount(0,2,this.value)" onchange="setCount(0,2,this.value)" aria-label="Nombre d’élèves"><button onclick="changeCount(0,2,1)" aria-label="Ajouter un élève">+</button></div></td><td><div class="cell-counter"><button onclick="changeCount(0,3,-1)" aria-label="Retirer un élève">−</button><input class="cell-value-input" id="count-0-3" type="number" inputmode="numeric" pattern="[0-9]*" min="0" step="1" value="3" onfocus="this.select()" oninput="setCount(0,3,this.value)" onchange="setCount(0,3,this.value)" aria-label="Nombre d’élèves"><button onclick="changeCount(0,3,1)" aria-label="Ajouter un élève">+</button></div></td><td><div class="cell-counter"><button onclick="changeCount(0,4,-1)" aria-label="Retirer un élève">−</button><input class="cell-value-input" id="count-0-4" type="number" inputmode="numeric" pattern="[0-9]*" min="0" step="1" value="1" onfocus="this.select()" oninput="setCount(0,4,this.value)" onchange="setCount(0,4,this.value)" aria-label="Nombre d’élèves"><button onclick="changeCount(0,4,1)" aria-label="Ajouter un élève">+</button></div></td><td class="total-cell" id="beltTotal-0">13</td></tr><tr><td class="belt-cell"><span class="belt-dot jaune"></span>Jaune</td><td><div class="cell-counter"><button onclick="changeCount(1,0,-1)" aria-label="Retirer un élève">−</button><input class="cell-value-input" id="count-1-0" type="number" inputmode="numeric" pattern="[0-9]*" min="0" step="1" value="23" onfocus="this.select()" oninput="setCount(1,0,this.value)" onchange="setCount(1,0,this.value)" aria-label="Nombre d’élèves"><button onclick="changeCount(1,0,1)" aria-label="Ajouter un élève">+</button></div></td><td><div class="cell-counter"><button onclick="changeCount(1,1,-1)" aria-label="Retirer un élève">−</button><input class="cell-value-input" id="count-1-1" type="number" inputmode="numeric" pattern="[0-9]*" min="0" step="1" value="15" onfocus="this.select()" oninput="setCount(1,1,this.value)" onchange="setCount(1,1,this.value)" aria-label="Nombre d’élèves"><button onclick="changeCount(1,1,1)" aria-label="Ajouter un élève">+</button></div></td><td><div class="cell-counter"><button onclick="changeCount(1,2,-1)" aria-label="Retirer un élève">−</button><input class="cell-value-input" id="count-1-2" type="number" inputmode="numeric" pattern="[0-9]*" min="0" step="1" value="15" onfocus="this.select()" oninput="setCount(1,2,this.value)" onchange="setCount(1,2,this.value)" aria-label="Nombre d’élèves"><button onclick="changeCount(1,2,1)" aria-label="Ajouter un élève">+</button></div></td><td><div class="cell-counter"><button onclick="changeCount(1,3,-1)" aria-label="Retirer un élève">−</button><input class="cell-value-input" id="count-1-3" type="number" inputmode="numeric" pattern="[0-9]*" min="0" step="1" value="7" onfocus="this.select()" oninput="setCount(1,3,this.value)" onchange="setCount(1,3,this.value)" aria-label="Nombre d’élèves"><button onclick="changeCount(1,3,1)" aria-label="Ajouter un élève">+</button></div></td><td><div class="cell-counter"><button onclick="changeCount(1,4,-1)" aria-label="Retirer un élève">−</button><input class="cell-value-input" id="count-1-4" type="number" inputmode="numeric" pattern="[0-9]*" min="0" step="1" value="13" onfocus="this.select()" oninput="setCount(1,4,this.value)" onchange="setCount(1,4,this.value)" aria-label="Nombre d’élèves"><button onclick="changeCount(1,4,1)" aria-label="Ajouter un élève">+</button></div></td><td class="total-cell" id="beltTotal-1">69</td></tr><tr><td class="belt-cell"><span class="belt-dot orange"></span>Orange</td><td><div class="cell-counter"><button onclick="changeCount(2,0,-1)" aria-label="Retirer un élève">−</button><input class="cell-value-input" id="count-2-0" type="number" inputmode="numeric" pattern="[0-9]*" min="0" step="1" value="36" onfocus="this.select()" oninput="setCount(2,0,this.value)" onchange="setCount(2,0,this.value)" aria-label="Nombre d’élèves"><button onclick="changeCount(2,0,1)" aria-label="Ajouter un élève">+</button></div></td><td><div class="cell-counter"><button onclick="changeCount(2,1,-1)" aria-label="Retirer un élève">−</button><input class="cell-value-input" id="count-2-1" type="number" inputmode="numeric" pattern="[0-9]*" min="0" step="1" value="29" onfocus="this.select()" oninput="setCount(2,1,this.value)" onchange="setCount(2,1,this.value)" aria-label="Nombre d’élèves"><button onclick="changeCount(2,1,1)" aria-label="Ajouter un élève">+</button></div></td><td><div class="cell-counter"><button onclick="changeCount(2,2,-1)" aria-label="Retirer un élève">−</button><input class="cell-value-input" id="count-2-2" type="number" inputmode="numeric" pattern="[0-9]*" min="0" step="1" value="18" onfocus="this.select()" oninput="setCount(2,2,this.value)" onchange="setCount(2,2,this.value)" aria-label="Nombre d’élèves"><button onclick="changeCount(2,2,1)" aria-label="Ajouter un élève">+</button></div></td><td><div class="cell-counter"><button onclick="changeCount(2,3,-1)" aria-label="Retirer un élève">−</button><input class="cell-value-input" id="count-2-3" type="number" inputmode="numeric" pattern="[0-9]*" min="0" step="1" value="14" onfocus="this.select()" oninput="setCount(2,3,this.value)" onchange="setCount(2,3,this.value)" aria-label="Nombre d’élèves"><button onclick="changeCount(2,3,1)" aria-label="Ajouter un élève">+</button></div></td><td><div class="cell-counter"><button onclick="changeCount(2,4,-1)" aria-label="Retirer un élève">−</button><input class="cell-value-input" id="count-2-4" type="number" inputmode="numeric" pattern="[0-9]*" min="0" step="1" value="11" onfocus="this.select()" oninput="setCount(2,4,this.value)" onchange="setCount(2,4,this.value)" aria-label="Nombre d’élèves"><button onclick="changeCount(2,4,1)" aria-label="Ajouter un élève">+</button></div></td><td class="total-cell" id="beltTotal-2">111</td></tr><tr><td class="belt-cell"><span class="belt-dot verte"></span>Verte</td><td><div class="cell-counter"><button onclick="changeCount(3,0,-1)" aria-label="Retirer un élève">−</button><input class="cell-value-input" id="count-3-0" type="number" inputmode="numeric" pattern="[0-9]*" min="0" step="1" value="17" onfocus="this.select()" oninput="setCount(3,0,this.value)" onchange="setCount(3,0,this.value)" aria-label="Nombre d’élèves"><button onclick="changeCount(3,0,1)" aria-label="Ajouter un élève">+</button></div></td><td><div class="cell-counter"><button onclick="changeCount(3,1,-1)" aria-label="Retirer un élève">−</button><input class="cell-value-input" id="count-3-1" type="number" inputmode="numeric" pattern="[0-9]*" min="0" step="1" value="23" onfocus="this.select()" oninput="setCount(3,1,this.value)" onchange="setCount(3,1,this.value)" aria-label="Nombre d’élèves"><button onclick="changeCount(3,1,1)" aria-label="Ajouter un élève">+</button></div></td><td><div class="cell-counter"><button onclick="changeCount(3,2,-1)" aria-label="Retirer un élève">−</button><input class="cell-value-input" id="count-3-2" type="number" inputmode="numeric" pattern="[0-9]*" min="0" step="1" value="9" onfocus="this.select()" oninput="setCount(3,2,this.value)" onchange="setCount(3,2,this.value)" aria-label="Nombre d’élèves"><button onclick="changeCount(3,2,1)" aria-label="Ajouter un élève">+</button></div></td><td><div class="cell-counter"><button onclick="changeCount(3,3,-1)" aria-label="Retirer un élève">−</button><input class="cell-value-input" id="count-3-3" type="number" inputmode="numeric" pattern="[0-9]*" min="0" step="1" value="19" onfocus="this.select()" oninput="setCount(3,3,this.value)" onchange="setCount(3,3,this.value)" aria-label="Nombre d’élèves"><button onclick="changeCount(3,3,1)" aria-label="Ajouter un élève">+</button></div></td><td><div class="cell-counter"><button onclick="changeCount(3,4,-1)" aria-label="Retirer un élève">−</button><input class="cell-value-input" id="count-3-4" type="number" inputmode="numeric" pattern="[0-9]*" min="0" step="1" value="8" onfocus="this.select()" oninput="setCount(3,4,this.value)" onchange="setCount(3,4,this.value)" aria-label="Nombre d’élèves"><button onclick="changeCount(3,4,1)" aria-label="Ajouter un élève">+</button></div></td><td class="total-cell" id="beltTotal-3">80</td></tr><tr><td class="belt-cell"><span class="belt-dot bleue"></span>Bleue</td><td><div class="cell-counter"><button onclick="changeCount(4,0,-1)" aria-label="Retirer un élève">−</button><input class="cell-value-input" id="count-4-0" type="number" inputmode="numeric" pattern="[0-9]*" min="0" step="1" value="0" onfocus="this.select()" oninput="setCount(4,0,this.value)" onchange="setCount(4,0,this.value)" aria-label="Nombre d’élèves"><button onclick="changeCount(4,0,1)" aria-label="Ajouter un élève">+</button></div></td><td><div class="cell-counter"><button onclick="changeCount(4,1,-1)" aria-label="Retirer un élève">−</button><input class="cell-value-input" id="count-4-1" type="number" inputmode="numeric" pattern="[0-9]*" min="0" step="1" value="0" onfocus="this.select()" oninput="setCount(4,1,this.value)" onchange="setCount(4,1,this.value)" aria-label="Nombre d’élèves"><button onclick="changeCount(4,1,1)" aria-label="Ajouter un élève">+</button></div></td><td><div class="cell-counter"><button onclick="changeCount(4,2,-1)" aria-label="Retirer un élève">−</button><input class="cell-value-input" id="count-4-2" type="number" inputmode="numeric" pattern="[0-9]*" min="0" step="1" value="20" onfocus="this.select()" oninput="setCount(4,2,this.value)" onchange="setCount(4,2,this.value)" aria-label="Nombre d’élèves"><button onclick="changeCount(4,2,1)" aria-label="Ajouter un élève">+</button></div></td><td><div class="cell-counter"><button onclick="changeCount(4,3,-1)" aria-label="Retirer un élève">−</button><input class="cell-value-input" id="count-4-3" type="number" inputmode="numeric" pattern="[0-9]*" min="0" step="1" value="11" onfocus="this.select()" oninput="setCount(4,3,this.value)" onchange="setCount(4,3,this.value)" aria-label="Nombre d’élèves"><button onclick="changeCount(4,3,1)" aria-label="Ajouter un élève">+</button></div></td><td><div class="cell-counter"><button onclick="changeCount(4,4,-1)" aria-label="Retirer un élève">−</button><input class="cell-value-input" id="count-4-4" type="number" inputmode="numeric" pattern="[0-9]*" min="0" step="1" value="14" onfocus="this.select()" oninput="setCount(4,4,this.value)" onchange="setCount(4,4,this.value)" aria-label="Nombre d’élèves"><button onclick="changeCount(4,4,1)" aria-label="Ajouter un élève">+</button></div></td><td class="total-cell" id="beltTotal-4">46</td></tr><tr><td class="belt-cell"><span class="belt-dot marron"></span>Marron</td><td><div class="cell-counter"><button onclick="changeCount(5,0,-1)" aria-label="Retirer un élève">−</button><input class="cell-value-input" id="count-5-0" type="number" inputmode="numeric" pattern="[0-9]*" min="0" step="1" value="0" onfocus="this.select()" oninput="setCount(5,0,this.value)" onchange="setCount(5,0,this.value)" aria-label="Nombre d’élèves"><button onclick="changeCount(5,0,1)" aria-label="Ajouter un élève">+</button></div></td><td><div class="cell-counter"><button onclick="changeCount(5,1,-1)" aria-label="Retirer un élève">−</button><input class="cell-value-input" id="count-5-1" type="number" inputmode="numeric" pattern="[0-9]*" min="0" step="1" value="0" onfocus="this.select()" oninput="setCount(5,1,this.value)" onchange="setCount(5,1,this.value)" aria-label="Nombre d’élèves"><button onclick="changeCount(5,1,1)" aria-label="Ajouter un élève">+</button></div></td><td><div class="cell-counter"><button onclick="changeCount(5,2,-1)" aria-label="Retirer un élève">−</button><input class="cell-value-input" id="count-5-2" type="number" inputmode="numeric" pattern="[0-9]*" min="0" step="1" value="0" onfocus="this.select()" oninput="setCount(5,2,this.value)" onchange="setCount(5,2,this.value)" aria-label="Nombre d’élèves"><button onclick="changeCount(5,2,1)" aria-label="Ajouter un élève">+</button></div></td><td><div class="cell-counter"><button onclick="changeCount(5,3,-1)" aria-label="Retirer un élève">−</button><input class="cell-value-input" id="count-5-3" type="number" inputmode="numeric" pattern="[0-9]*" min="0" step="1" value="11" onfocus="this.select()" oninput="setCount(5,3,this.value)" onchange="setCount(5,3,this.value)" aria-label="Nombre d’élèves"><button onclick="changeCount(5,3,1)" aria-label="Ajouter un élève">+</button></div></td><td><div class="cell-counter"><button onclick="changeCount(5,4,-1)" aria-label="Retirer un élève">−</button><input class="cell-value-input" id="count-5-4" type="number" inputmode="numeric" pattern="[0-9]*" min="0" step="1" value="17" onfocus="this.select()" oninput="setCount(5,4,this.value)" onchange="setCount(5,4,this.value)" aria-label="Nombre d’élèves"><button onclick="changeCount(5,4,1)" aria-label="Ajouter un élève">+</button></div></td><td class="total-cell" id="beltTotal-5">28</td></tr></tbody>
+        <tfoot>
+          <tr class="grand-total-row">
+            <td>Total général</td>
+            <td id="levelTotal-0">82</td>
+            <td id="levelTotal-1">72</td>
+            <td id="levelTotal-2">64</td>
+            <td id="levelTotal-3">65</td>
+            <td id="levelTotal-4">64</td>
+            <td id="grandTotal">347</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <div class="counter-footer">
+      <div>
+        <button class="save-btn" onclick="saveCounters()">Enregistrer la mise à jour</button>
+        <span class="save-status" id="saveStatus">Enregistré ✓ (point ajouté aux graphiques)</span>
+      </div>
+      <div class="last-updated" id="lastUpdated">Dernière mise à jour : 2 septembre 2026</div>
+    </div>
+  </div>
+
+  <div id="viewPercent" class="panel hidden">
+    <div class="charts-section" style="margin-top:0;border-top:none;padding-top:0;">
+      <div class="charts-header-row">
+        <div>
+          <div class="charts-title">Répartition en pourcentage par niveau</div>
+          <div class="charts-subtitle">Calcul automatique à partir des effectifs saisis dans le compteur : pour chaque niveau, part de chaque couleur de ceinture.</div>
+        </div>
+      </div>
+      <div class="counters-wrap" style="margin-bottom:20px;">
+        <table class="counters-table" id="percentTable">
+          <thead>
+            <tr>
+              <th>Ceinture</th>
+              <th>CP</th>
+              <th>CE1</th>
+              <th>CE2</th>
+              <th>CM1</th>
+              <th>CM2</th>
+            </tr>
+          </thead>
+          <tbody id="percentBody"><tr><td class="belt-cell"><span class="belt-dot blanche"></span>Blanche</td><td>6,1 %</td><td>5,6 %</td><td>3,1 %</td><td>3,1 %</td><td>0 %</td></tr><tr><td class="belt-cell"><span class="belt-dot jaune"></span>Jaune</td><td>26,8 %</td><td>19,4 %</td><td>18,8 %</td><td>12,3 %</td><td>20,3 %</td></tr><tr><td class="belt-cell"><span class="belt-dot orange"></span>Orange</td><td>46,3 %</td><td>37,5 %</td><td>31,3 %</td><td>21,5 %</td><td>18,8 %</td></tr><tr><td class="belt-cell"><span class="belt-dot verte"></span>Verte</td><td>20,7 %</td><td>37,5 %</td><td>15,6 %</td><td>27,7 %</td><td>12,5 %</td></tr><tr><td class="belt-cell"><span class="belt-dot bleue"></span>Bleue</td><td>0 %</td><td>0 %</td><td>31,3 %</td><td>18,5 %</td><td>21,9 %</td></tr><tr><td class="belt-cell"><span class="belt-dot marron"></span>Marron</td><td>0 %</td><td>0 %</td><td>0 %</td><td>16,9 %</td><td>26,6 %</td></tr></tbody>
+          <tfoot>
+            <tr class="grand-total-row">
+              <td>Total</td>
+              <td id="percentColTotal-0">100 %</td>
+              <td id="percentColTotal-1">100 %</td>
+              <td id="percentColTotal-2">100 %</td>
+              <td id="percentColTotal-3">100 %</td>
+              <td id="percentColTotal-4">100 %</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div class="chart-legend" id="pieLegend"><span class="legend-item"><span class="legend-dot" style="background:#b4b2a9;border:1px solid #b4b2a9"></span>Ceinture Blanche</span><span class="legend-item"><span class="legend-dot" style="background:#FAFA69"></span>Ceinture Jaune</span><span class="legend-item"><span class="legend-dot" style="background:#FFBC71"></span>Ceinture Orange</span><span class="legend-item"><span class="legend-dot" style="background:#6AB079"></span>Ceinture Verte</span><span class="legend-item"><span class="legend-dot" style="background:#83ABE6"></span>Ceinture Bleue</span><span class="legend-item"><span class="legend-dot" style="background:#8A655C"></span>Ceinture Marron</span></div>
+      <div class="charts-grid pie-charts-grid" id="pieChartsGrid"><div class="chart-card"><div class="chart-card-title">CP (82 élèves)</div><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><path d="M 60 60 L 60 3 A 57 57 0 0 1 81.30757309492382 7.13236028718061 Z" fill="#b4b2a9" stroke="#fff" stroke-width="1"><title>Ceinture Blanche — 5 élève(s) (6.1 %)</title></path><text x="66.72842179787938" y="25.30642797131115" font-size="9" font-weight="700" fill="#2c2c2a" text-anchor="middle" dominant-baseline="middle">6,1 %</text><path d="M 60 60 L 81.30757309492382 7.13236028718061 A 57 57 0 0 1 110.07519830192372 87.23002965519899 Z" fill="#FAFA69" stroke="#fff" stroke-width="1"><title>Ceinture Jaune — 22 élève(s) (26.8 %)</title></path><text x="93.2598892955977" y="48.054483517043515" font-size="9" font-weight="700" fill="#2c2c2a" text-anchor="middle" dominant-baseline="middle">26,8 %</text><path d="M 60 60 L 110.07519830192372 87.23002965519899 A 57 57 0 0 1 5.037550759170955 44.89605437479031 Z" fill="#FFBC71" stroke="#fff" stroke-width="1"><title>Ceinture Orange — 38 élève(s) (46.3 %)</title></path><text x="46.789304681147236" y="92.77793662194802" font-size="9" font-weight="700" fill="#2c2c2a" text-anchor="middle" dominant-baseline="middle">46,3 %</text><path d="M 60 60 L 5.037550759170955 44.89605437479031 A 57 57 0 0 1 59.99999999999999 3 Z" fill="#6AB079" stroke="#fff" stroke-width="1"><title>Ceinture Verte — 17 élève(s) (20.7 %)</title></path><text x="38.575993976438994" y="31.89434992919713" font-size="9" font-weight="700" fill="#12331b" text-anchor="middle" dominant-baseline="middle">20,7 %</text></svg></div><div class="chart-card"><div class="chart-card-title">CE1 (72 élèves)</div><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><path d="M 60 60 L 60 3 A 57 57 0 0 1 79.49514816956312 6.437520615203226 Z" fill="#b4b2a9" stroke="#fff" stroke-width="1"><title>Ceinture Blanche — 4 élève(s) (5.6 %)</title></path><path d="M 60 60 L 79.49514816956312 6.437520615203226 A 57 57 0 0 1 117 60 Z" fill="#FAFA69" stroke="#fff" stroke-width="1"><title>Ceinture Jaune — 14 élève(s) (19.4 %)</title></path><text x="88.94883324517296" y="39.729808739354034" font-size="9" font-weight="700" fill="#2c2c2a" text-anchor="middle" dominant-baseline="middle">19,4 %</text><path d="M 60 60 L 117 60 A 57 57 0 0 1 19.694913472366792 100.30508652763322 Z" fill="#FFBC71" stroke="#fff" stroke-width="1"><title>Ceinture Orange — 27 élève(s) (37.5 %)</title></path><text x="73.52403249978228" y="92.64990267894888" font-size="9" font-weight="700" fill="#2c2c2a" text-anchor="middle" dominant-baseline="middle">37,5 %</text><path d="M 60 60 L 19.694913472366792 100.30508652763322 A 57 57 0 0 1 59.99999999999999 3 Z" fill="#6AB079" stroke="#fff" stroke-width="1"><title>Ceinture Verte — 27 élève(s) (37.5 %)</title></path><text x="27.350097321051123" y="46.475967500217735" font-size="9" font-weight="700" fill="#12331b" text-anchor="middle" dominant-baseline="middle">37,5 %</text></svg></div><div class="chart-card"><div class="chart-card-title">CE2 (64 élèves)</div><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><path d="M 60 60 L 60 3 A 57 57 0 0 1 71.12014835491931 4.095239017015864 Z" fill="#b4b2a9" stroke="#fff" stroke-width="1"><title>Ceinture Blanche — 2 élève(s) (3.1 %)</title></path><path d="M 60 60 L 71.12014835491931 4.095239017015864 A 57 57 0 0 1 115.90476098298413 48.87985164508069 Z" fill="#FAFA69" stroke="#fff" stroke-width="1"><title>Ceinture Jaune — 12 élève(s) (18.8 %)</title></path><text x="84.98915364713258" y="35.01084635286742" font-size="9" font-weight="700" fill="#2c2c2a" text-anchor="middle" dominant-baseline="middle">18,8 %</text><path d="M 60 60 L 115.90476098298413 48.87985164508069 A 57 57 0 0 1 48.87985164508069 115.90476098298413 Z" fill="#FFBC71" stroke="#fff" stroke-width="1"><title>Ceinture Orange — 20 élève(s) (31.3 %)</title></path><text x="84.98915364713258" y="84.98915364713258" font-size="9" font-weight="700" fill="#2c2c2a" text-anchor="middle" dominant-baseline="middle">31,3 %</text><path d="M 60 60 L 48.87985164508069 115.90476098298413 A 57 57 0 0 1 7.338866646856658 81.81295564481013 Z" fill="#6AB079" stroke="#fff" stroke-width="1"><title>Ceinture Verte — 10 élève(s) (15.6 %)</title></path><text x="37.580541337656776" y="87.31818942183912" font-size="9" font-weight="700" fill="#12331b" text-anchor="middle" dominant-baseline="middle">15,6 %</text><path d="M 60 60 L 7.338866646856658 81.81295564481013 A 57 57 0 0 1 59.99999999999999 3 Z" fill="#83ABE6" stroke="#fff" stroke-width="1"><title>Ceinture Bleue — 20 élève(s) (31.3 %)</title></path><text x="30.615863901228046" y="40.366147965087265" font-size="9" font-weight="700" fill="#0c2c53" text-anchor="middle" dominant-baseline="middle">31,3 %</text></svg></div><div class="chart-card"><div class="chart-card-title">CM1 (65 élèves)</div><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><path d="M 60 60 L 60 3 A 57 57 0 0 1 70.95122288916139 4.061902810053432 Z" fill="#b4b2a9" stroke="#fff" stroke-width="1"><title>Ceinture Blanche — 2 élève(s) (3.1 %)</title></path><path d="M 60 60 L 70.95122288916139 4.061902810053432 A 57 57 0 0 1 106.91008035593842 27.620309436324135 Z" fill="#FAFA69" stroke="#fff" stroke-width="1"><title>Ceinture Jaune — 8 élève(s) (12.3 %)</title></path><text x="79.36676200991404" y="30.439145322718595" font-size="9" font-weight="700" fill="#2c2c2a" text-anchor="middle" dominant-baseline="middle">12,3 %</text><path d="M 60 60 L 106.91008035593842 27.620309436324135 A 57 57 0 0 1 101.73931399607308 98.81790395084744 Z" fill="#FFBC71" stroke="#fff" stroke-width="1"><title>Ceinture Orange — 14 élève(s) (21.5 %)</title></path><text x="95.2471671100973" y="62.559845837716686" font-size="9" font-weight="700" fill="#2c2c2a" text-anchor="middle" dominant-baseline="middle">21,5 %</text><path d="M 60 60 L 101.73931399607308 98.81790395084744 A 57 57 0 0 1 14.709072256315991 94.60826294566652 Z" fill="#6AB079" stroke="#fff" stroke-width="1"><title>Ceinture Verte — 18 élève(s) (27.7 %)</title></path><text x="58.29260516756858" y="95.29873089625443" font-size="9" font-weight="700" fill="#12331b" text-anchor="middle" dominant-baseline="middle">27,7 %</text><path d="M 60 60 L 14.709072256315991 94.60826294566652 A 57 57 0 0 1 10.183822140288484 32.298945445171434 Z" fill="#83ABE6" stroke="#fff" stroke-width="1"><title>Ceinture Bleue — 12 élève(s) (18.5 %)</title></path><text x="24.752832889902706" y="62.559845837716665" font-size="9" font-weight="700" fill="#0c2c53" text-anchor="middle" dominant-baseline="middle">18,5 %</text><path d="M 60 60 L 10.183822140288484 32.298945445171434 A 57 57 0 0 1 60.00000000000004 3 Z" fill="#8A655C" stroke="#fff" stroke-width="1"><title>Ceinture Marron — 11 élève(s) (16.9 %)</title></path><text x="42.08403876622772" y="29.53799197245906" font-size="9" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="middle">16,9 %</text></svg></div><div class="chart-card"><div class="chart-card-title">CM2 (64 élèves)</div><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><path d="M 60 60 L 60 3 A 57 57 0 0 1 114.54559913673592 43.45377339649565 Z" fill="#FAFA69" stroke="#fff" stroke-width="1"><title>Ceinture Jaune — 13 élève(s) (20.3 %)</title></path><text x="81.05201342076259" y="31.614645837474015" font-size="9" font-weight="700" fill="#2c2c2a" text-anchor="middle" dominant-baseline="middle">20,3 %</text><path d="M 60 60 L 114.54559913673592 43.45377339649565 A 57 57 0 0 1 96.1604171973278 104.06159584167601 Z" fill="#FFBC71" stroke="#fff" stroke-width="1"><title>Ceinture Orange — 12 élève(s) (18.8 %)</title></path><text x="93.81827146477626" y="70.2586604941727" font-size="9" font-weight="700" fill="#2c2c2a" text-anchor="middle" dominant-baseline="middle">18,8 %</text><path d="M 60 60 L 96.1604171973278 104.06159584167601 A 57 57 0 0 1 54.413023001215045 116.72552942031523 Z" fill="#6AB079" stroke="#fff" stroke-width="1"><title>Ceinture Verte — 8 élève(s) (12.5 %)</title></path><text x="70.2586604941727" y="93.81827146477626" font-size="9" font-weight="700" fill="#12331b" text-anchor="middle" dominant-baseline="middle">12,5 %</text><path d="M 60 60 L 54.413023001215045 116.72552942031523 A 57 57 0 0 1 3.274470579684774 65.58697699878495 Z" fill="#83ABE6" stroke="#fff" stroke-width="1"><title>Ceinture Bleue — 14 élève(s) (21.9 %)</title></path><text x="35.01084635286742" y="84.98915364713258" font-size="9" font-weight="700" fill="#0c2c53" text-anchor="middle" dominant-baseline="middle">21,9 %</text><path d="M 60 60 L 3.274470579684774 65.58697699878495 A 57 57 0 0 1 59.99999999999999 3 Z" fill="#8A655C" stroke="#fff" stroke-width="1"><title>Ceinture Marron — 17 élève(s) (26.6 %)</title></path><text x="33.81478722995575" y="36.267106535706375" font-size="9" font-weight="700" fill="#fff" text-anchor="middle" dominant-baseline="middle">26,6 %</text></svg></div></div>
+    </div>
+  </div>
+
+  <div id="viewInfo" class="panel hidden">
+    <div class="charts-section" style="margin-top:0;border-top:none;padding-top:0;">
+      <div class="charts-header-row">
+        <div>
+          <div class="charts-title">Progression hebdomadaire du passage de ceinture</div>
+          <div class="charts-subtitle">Chaque clic sur « Enregistrer la mise à jour » ajoute un nouveau point, daté, sur les courbes ci-dessous — tous les enregistrements sont conservés en mémoire (survolez un point pour voir sa date et son heure).</div>
+        </div>
+        <button class="reset-btn" onclick="resetCharts()">Réinitialiser les graphiques</button>
+      </div>
+      <div class="chart-legend" id="chartLegend"><span class="legend-item"><span class="legend-dot" style="background:#b4b2a9;border:1px solid #b4b2a9"></span>Ceinture Blanche</span><span class="legend-item"><span class="legend-dot" style="background:#FAFA69"></span>Ceinture Jaune</span><span class="legend-item"><span class="legend-dot" style="background:#FFBC71"></span>Ceinture Orange</span><span class="legend-item"><span class="legend-dot" style="background:#6AB079"></span>Ceinture Verte</span><span class="legend-item"><span class="legend-dot" style="background:#83ABE6"></span>Ceinture Bleue</span><span class="legend-item"><span class="legend-dot" style="background:#8A655C"></span>Ceinture Marron</span></div>
+      <div class="charts-grid" id="chartsGrid"><div class="chart-card"><div class="chart-card-title">CP</div><svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg"><line x1="30" y1="148" x2="312" y2="148" stroke="#e5e3da" stroke-width="1"></line><text x="24" y="151" font-size="9" fill="#999" text-anchor="end">0</text><line x1="30" y1="113.5" x2="312" y2="113.5" stroke="#e5e3da" stroke-width="1"></line><text x="24" y="116.5" font-size="9" fill="#999" text-anchor="end">11</text><line x1="30" y1="79" x2="312" y2="79" stroke="#e5e3da" stroke-width="1"></line><text x="24" y="82" font-size="9" fill="#999" text-anchor="end">22</text><line x1="30" y1="44.5" x2="312" y2="44.5" stroke="#e5e3da" stroke-width="1"></line><text x="24" y="47.5" font-size="9" fill="#999" text-anchor="end">33</text><line x1="30" y1="10" x2="312" y2="10" stroke="#e5e3da" stroke-width="1"></line><text x="24" y="13" font-size="9" fill="#999" text-anchor="end">44</text><text x="30" y="164" font-size="8.5" fill="#999" text-anchor="middle">02/09</text><text x="100.5" y="164" font-size="8.5" fill="#999" text-anchor="middle">02/09</text><text x="171" y="164" font-size="8.5" fill="#999" text-anchor="middle">02/09</text><text x="241.5" y="164" font-size="8.5" fill="#999" text-anchor="middle">02/09</text><text x="312" y="164" font-size="8.5" fill="#999" text-anchor="middle">02/09</text><path d="M30,116.63636363636364 L100.5,126.04545454545455 L171,129.1818181818182 L241.5,129.1818181818182 L312,132.3181818181818 " fill="none" stroke="#b4b2a9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="116.63636363636364" r="2.6" fill="#b4b2a9"><title>2 septembre 2026 à 22:25 — 10</title></circle><circle cx="100.5" cy="126.04545454545455" r="2.6" fill="#b4b2a9"><title>2 septembre 2026 à 22:28 — 7</title></circle><circle cx="171" cy="129.1818181818182" r="2.6" fill="#b4b2a9"><title>2 septembre 2026 à 22:32 — 6</title></circle><circle cx="241.5" cy="129.1818181818182" r="2.6" fill="#b4b2a9"><title>2 septembre 2026 à 22:36 — 6</title></circle><circle cx="312" cy="132.3181818181818" r="2.6" fill="#b4b2a9"><title>2 septembre 2026 à 22:58 — 5</title></circle><path d="M30,57.04545454545455 L100.5,69.59090909090908 L171,66.45454545454545 L241.5,75.86363636363636 L312,79 " fill="none" stroke="#FAFA69" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="57.04545454545455" r="2.6" fill="#FAFA69"><title>2 septembre 2026 à 22:25 — 29</title></circle><circle cx="100.5" cy="69.59090909090908" r="2.6" fill="#FAFA69"><title>2 septembre 2026 à 22:28 — 25</title></circle><circle cx="171" cy="66.45454545454545" r="2.6" fill="#FAFA69"><title>2 septembre 2026 à 22:32 — 26</title></circle><circle cx="241.5" cy="75.86363636363636" r="2.6" fill="#FAFA69"><title>2 septembre 2026 à 22:36 — 23</title></circle><circle cx="312" cy="79" r="2.6" fill="#FAFA69"><title>2 septembre 2026 à 22:58 — 22</title></circle><path d="M30,50.772727272727266 L100.5,41.36363636363636 L171,47.63636363636364 L241.5,35.09090909090908 L312,28.818181818181813 " fill="none" stroke="#FFBC71" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="50.772727272727266" r="2.6" fill="#FFBC71"><title>2 septembre 2026 à 22:25 — 31</title></circle><circle cx="100.5" cy="41.36363636363636" r="2.6" fill="#FFBC71"><title>2 septembre 2026 à 22:28 — 34</title></circle><circle cx="171" cy="47.63636363636364" r="2.6" fill="#FFBC71"><title>2 septembre 2026 à 22:32 — 32</title></circle><circle cx="241.5" cy="35.09090909090908" r="2.6" fill="#FFBC71"><title>2 septembre 2026 à 22:36 — 36</title></circle><circle cx="312" cy="28.818181818181813" r="2.6" fill="#FFBC71"><title>2 septembre 2026 à 22:58 — 38</title></circle><path d="M30,110.36363636363637 L100.5,97.81818181818181 L171,91.54545454545453 L241.5,94.68181818181819 L312,94.68181818181819 " fill="none" stroke="#6AB079" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="110.36363636363637" r="2.6" fill="#6AB079"><title>2 septembre 2026 à 22:25 — 12</title></circle><circle cx="100.5" cy="97.81818181818181" r="2.6" fill="#6AB079"><title>2 septembre 2026 à 22:28 — 16</title></circle><circle cx="171" cy="91.54545454545453" r="2.6" fill="#6AB079"><title>2 septembre 2026 à 22:32 — 18</title></circle><circle cx="241.5" cy="94.68181818181819" r="2.6" fill="#6AB079"><title>2 septembre 2026 à 22:36 — 17</title></circle><circle cx="312" cy="94.68181818181819" r="2.6" fill="#6AB079"><title>2 septembre 2026 à 22:58 — 17</title></circle><path d="M30,148 L100.5,148 L171,148 L241.5,148 L312,148 " fill="none" stroke="#83ABE6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="148" r="2.6" fill="#83ABE6"><title>2 septembre 2026 à 22:25 — 0</title></circle><circle cx="100.5" cy="148" r="2.6" fill="#83ABE6"><title>2 septembre 2026 à 22:28 — 0</title></circle><circle cx="171" cy="148" r="2.6" fill="#83ABE6"><title>2 septembre 2026 à 22:32 — 0</title></circle><circle cx="241.5" cy="148" r="2.6" fill="#83ABE6"><title>2 septembre 2026 à 22:36 — 0</title></circle><circle cx="312" cy="148" r="2.6" fill="#83ABE6"><title>2 septembre 2026 à 22:58 — 0</title></circle><path d="M30,148 L100.5,148 L171,148 L241.5,148 L312,148 " fill="none" stroke="#8A655C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="148" r="2.6" fill="#8A655C"><title>2 septembre 2026 à 22:25 — 0</title></circle><circle cx="100.5" cy="148" r="2.6" fill="#8A655C"><title>2 septembre 2026 à 22:28 — 0</title></circle><circle cx="171" cy="148" r="2.6" fill="#8A655C"><title>2 septembre 2026 à 22:32 — 0</title></circle><circle cx="241.5" cy="148" r="2.6" fill="#8A655C"><title>2 septembre 2026 à 22:36 — 0</title></circle><circle cx="312" cy="148" r="2.6" fill="#8A655C"><title>2 septembre 2026 à 22:58 — 0</title></circle></svg></div><div class="chart-card"><div class="chart-card-title">CE1</div><svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg"><line x1="30" y1="148" x2="312" y2="148" stroke="#e5e3da" stroke-width="1"></line><text x="24" y="151" font-size="9" fill="#999" text-anchor="end">0</text><line x1="30" y1="111.47058823529412" x2="312" y2="111.47058823529412" stroke="#e5e3da" stroke-width="1"></line><text x="24" y="114.47058823529412" font-size="9" fill="#999" text-anchor="end">9</text><line x1="30" y1="79" x2="312" y2="79" stroke="#e5e3da" stroke-width="1"></line><text x="24" y="82" font-size="9" fill="#999" text-anchor="end">17</text><line x1="30" y1="42.47058823529413" x2="312" y2="42.47058823529413" stroke="#e5e3da" stroke-width="1"></line><text x="24" y="45.47058823529413" font-size="9" fill="#999" text-anchor="end">26</text><line x1="30" y1="10" x2="312" y2="10" stroke="#e5e3da" stroke-width="1"></line><text x="24" y="13" font-size="9" fill="#999" text-anchor="end">34</text><text x="30" y="164" font-size="8.5" fill="#999" text-anchor="middle">02/09</text><text x="100.5" y="164" font-size="8.5" fill="#999" text-anchor="middle">02/09</text><text x="171" y="164" font-size="8.5" fill="#999" text-anchor="middle">02/09</text><text x="241.5" y="164" font-size="8.5" fill="#999" text-anchor="middle">02/09</text><text x="312" y="164" font-size="8.5" fill="#999" text-anchor="middle">02/09</text><path d="M30,115.52941176470588 L100.5,119.58823529411765 L171,123.6470588235294 L241.5,127.70588235294117 L312,131.76470588235293 " fill="none" stroke="#b4b2a9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="115.52941176470588" r="2.6" fill="#b4b2a9"><title>2 septembre 2026 à 22:25 — 8</title></circle><circle cx="100.5" cy="119.58823529411765" r="2.6" fill="#b4b2a9"><title>2 septembre 2026 à 22:28 — 7</title></circle><circle cx="171" cy="123.6470588235294" r="2.6" fill="#b4b2a9"><title>2 septembre 2026 à 22:32 — 6</title></circle><circle cx="241.5" cy="127.70588235294117" r="2.6" fill="#b4b2a9"><title>2 septembre 2026 à 22:36 — 5</title></circle><circle cx="312" cy="131.76470588235293" r="2.6" fill="#b4b2a9"><title>2 septembre 2026 à 22:58 — 4</title></circle><path d="M30,46.52941176470587 L100.5,79 L171,79 L241.5,87.11764705882354 L312,91.1764705882353 " fill="none" stroke="#FAFA69" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="46.52941176470587" r="2.6" fill="#FAFA69"><title>2 septembre 2026 à 22:25 — 25</title></circle><circle cx="100.5" cy="79" r="2.6" fill="#FAFA69"><title>2 septembre 2026 à 22:28 — 17</title></circle><circle cx="171" cy="79" r="2.6" fill="#FAFA69"><title>2 septembre 2026 à 22:32 — 17</title></circle><circle cx="241.5" cy="87.11764705882354" r="2.6" fill="#FAFA69"><title>2 septembre 2026 à 22:36 — 15</title></circle><circle cx="312" cy="91.1764705882353" r="2.6" fill="#FAFA69"><title>2 septembre 2026 à 22:58 — 14</title></circle><path d="M30,58.705882352941174 L100.5,42.47058823529413 L171,38.41176470588236 L241.5,30.294117647058826 L312,38.41176470588236 " fill="none" stroke="#FFBC71" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="58.705882352941174" r="2.6" fill="#FFBC71"><title>2 septembre 2026 à 22:25 — 22</title></circle><circle cx="100.5" cy="42.47058823529413" r="2.6" fill="#FFBC71"><title>2 septembre 2026 à 22:28 — 26</title></circle><circle cx="171" cy="38.41176470588236" r="2.6" fill="#FFBC71"><title>2 septembre 2026 à 22:32 — 27</title></circle><circle cx="241.5" cy="30.294117647058826" r="2.6" fill="#FFBC71"><title>2 septembre 2026 à 22:36 — 29</title></circle><circle cx="312" cy="38.41176470588236" r="2.6" fill="#FFBC71"><title>2 septembre 2026 à 22:58 — 27</title></circle><path d="M30,79 L100.5,58.705882352941174 L171,58.705882352941174 L241.5,54.647058823529406 L312,38.41176470588236 " fill="none" stroke="#6AB079" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="79" r="2.6" fill="#6AB079"><title>2 septembre 2026 à 22:25 — 17</title></circle><circle cx="100.5" cy="58.705882352941174" r="2.6" fill="#6AB079"><title>2 septembre 2026 à 22:28 — 22</title></circle><circle cx="171" cy="58.705882352941174" r="2.6" fill="#6AB079"><title>2 septembre 2026 à 22:32 — 22</title></circle><circle cx="241.5" cy="54.647058823529406" r="2.6" fill="#6AB079"><title>2 septembre 2026 à 22:36 — 23</title></circle><circle cx="312" cy="38.41176470588236" r="2.6" fill="#6AB079"><title>2 septembre 2026 à 22:58 — 27</title></circle><path d="M30,148 L100.5,148 L171,148 L241.5,148 L312,148 " fill="none" stroke="#83ABE6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="148" r="2.6" fill="#83ABE6"><title>2 septembre 2026 à 22:25 — 0</title></circle><circle cx="100.5" cy="148" r="2.6" fill="#83ABE6"><title>2 septembre 2026 à 22:28 — 0</title></circle><circle cx="171" cy="148" r="2.6" fill="#83ABE6"><title>2 septembre 2026 à 22:32 — 0</title></circle><circle cx="241.5" cy="148" r="2.6" fill="#83ABE6"><title>2 septembre 2026 à 22:36 — 0</title></circle><circle cx="312" cy="148" r="2.6" fill="#83ABE6"><title>2 septembre 2026 à 22:58 — 0</title></circle><path d="M30,148 L100.5,148 L171,148 L241.5,148 L312,148 " fill="none" stroke="#8A655C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="148" r="2.6" fill="#8A655C"><title>2 septembre 2026 à 22:25 — 0</title></circle><circle cx="100.5" cy="148" r="2.6" fill="#8A655C"><title>2 septembre 2026 à 22:28 — 0</title></circle><circle cx="171" cy="148" r="2.6" fill="#8A655C"><title>2 septembre 2026 à 22:32 — 0</title></circle><circle cx="241.5" cy="148" r="2.6" fill="#8A655C"><title>2 septembre 2026 à 22:36 — 0</title></circle><circle cx="312" cy="148" r="2.6" fill="#8A655C"><title>2 septembre 2026 à 22:58 — 0</title></circle></svg></div><div class="chart-card"><div class="chart-card-title">CE2</div><svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg"><line x1="30" y1="148" x2="312" y2="148" stroke="#e5e3da" stroke-width="1"></line><text x="24" y="151" font-size="9" fill="#999" text-anchor="end">0</text><line x1="30" y1="114.88" x2="312" y2="114.88" stroke="#e5e3da" stroke-width="1"></line><text x="24" y="117.88" font-size="9" fill="#999" text-anchor="end">6</text><line x1="30" y1="76.24" x2="312" y2="76.24" stroke="#e5e3da" stroke-width="1"></line><text x="24" y="79.24" font-size="9" fill="#999" text-anchor="end">13</text><line x1="30" y1="43.120000000000005" x2="312" y2="43.120000000000005" stroke="#e5e3da" stroke-width="1"></line><text x="24" y="46.120000000000005" font-size="9" fill="#999" text-anchor="end">19</text><line x1="30" y1="10" x2="312" y2="10" stroke="#e5e3da" stroke-width="1"></line><text x="24" y="13" font-size="9" fill="#999" text-anchor="end">25</text><text x="30" y="164" font-size="8.5" fill="#999" text-anchor="middle">02/09</text><text x="100.5" y="164" font-size="8.5" fill="#999" text-anchor="middle">02/09</text><text x="171" y="164" font-size="8.5" fill="#999" text-anchor="middle">02/09</text><text x="241.5" y="164" font-size="8.5" fill="#999" text-anchor="middle">02/09</text><text x="312" y="164" font-size="8.5" fill="#999" text-anchor="middle">02/09</text><path d="M30,120.4 L100.5,125.92 L171,131.44 L241.5,136.96 L312,136.96 " fill="none" stroke="#b4b2a9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="120.4" r="2.6" fill="#b4b2a9"><title>2 septembre 2026 à 22:25 — 5</title></circle><circle cx="100.5" cy="125.92" r="2.6" fill="#b4b2a9"><title>2 septembre 2026 à 22:28 — 4</title></circle><circle cx="171" cy="131.44" r="2.6" fill="#b4b2a9"><title>2 septembre 2026 à 22:32 — 3</title></circle><circle cx="241.5" cy="136.96" r="2.6" fill="#b4b2a9"><title>2 septembre 2026 à 22:36 — 2</title></circle><circle cx="312" cy="136.96" r="2.6" fill="#b4b2a9"><title>2 septembre 2026 à 22:58 — 2</title></circle><path d="M30,70.72 L100.5,87.28 L171,76.24 L241.5,65.2 L312,81.76 " fill="none" stroke="#FAFA69" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="70.72" r="2.6" fill="#FAFA69"><title>2 septembre 2026 à 22:25 — 14</title></circle><circle cx="100.5" cy="87.28" r="2.6" fill="#FAFA69"><title>2 septembre 2026 à 22:28 — 11</title></circle><circle cx="171" cy="76.24" r="2.6" fill="#FAFA69"><title>2 septembre 2026 à 22:32 — 13</title></circle><circle cx="241.5" cy="65.2" r="2.6" fill="#FAFA69"><title>2 septembre 2026 à 22:36 — 15</title></circle><circle cx="312" cy="81.76" r="2.6" fill="#FAFA69"><title>2 septembre 2026 à 22:58 — 12</title></circle><path d="M30,43.120000000000005 L100.5,32.08 L171,43.120000000000005 L241.5,48.64 L312,37.599999999999994 " fill="none" stroke="#FFBC71" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="43.120000000000005" r="2.6" fill="#FFBC71"><title>2 septembre 2026 à 22:25 — 19</title></circle><circle cx="100.5" cy="32.08" r="2.6" fill="#FFBC71"><title>2 septembre 2026 à 22:28 — 21</title></circle><circle cx="171" cy="43.120000000000005" r="2.6" fill="#FFBC71"><title>2 septembre 2026 à 22:32 — 19</title></circle><circle cx="241.5" cy="48.64" r="2.6" fill="#FFBC71"><title>2 septembre 2026 à 22:36 — 18</title></circle><circle cx="312" cy="37.599999999999994" r="2.6" fill="#FFBC71"><title>2 septembre 2026 à 22:58 — 20</title></circle><path d="M30,98.32 L100.5,92.8 L171,87.28 L241.5,98.32 L312,92.8 " fill="none" stroke="#6AB079" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="98.32" r="2.6" fill="#6AB079"><title>2 septembre 2026 à 22:25 — 9</title></circle><circle cx="100.5" cy="92.8" r="2.6" fill="#6AB079"><title>2 septembre 2026 à 22:28 — 10</title></circle><circle cx="171" cy="87.28" r="2.6" fill="#6AB079"><title>2 septembre 2026 à 22:32 — 11</title></circle><circle cx="241.5" cy="98.32" r="2.6" fill="#6AB079"><title>2 septembre 2026 à 22:36 — 9</title></circle><circle cx="312" cy="92.8" r="2.6" fill="#6AB079"><title>2 septembre 2026 à 22:58 — 10</title></circle><path d="M30,54.16 L100.5,48.64 L171,48.64 L241.5,37.599999999999994 L312,37.599999999999994 " fill="none" stroke="#83ABE6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="54.16" r="2.6" fill="#83ABE6"><title>2 septembre 2026 à 22:25 — 17</title></circle><circle cx="100.5" cy="48.64" r="2.6" fill="#83ABE6"><title>2 septembre 2026 à 22:28 — 18</title></circle><circle cx="171" cy="48.64" r="2.6" fill="#83ABE6"><title>2 septembre 2026 à 22:32 — 18</title></circle><circle cx="241.5" cy="37.599999999999994" r="2.6" fill="#83ABE6"><title>2 septembre 2026 à 22:36 — 20</title></circle><circle cx="312" cy="37.599999999999994" r="2.6" fill="#83ABE6"><title>2 septembre 2026 à 22:58 — 20</title></circle><path d="M30,148 L100.5,148 L171,148 L241.5,148 L312,148 " fill="none" stroke="#8A655C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="148" r="2.6" fill="#8A655C"><title>2 septembre 2026 à 22:25 — 0</title></circle><circle cx="100.5" cy="148" r="2.6" fill="#8A655C"><title>2 septembre 2026 à 22:28 — 0</title></circle><circle cx="171" cy="148" r="2.6" fill="#8A655C"><title>2 septembre 2026 à 22:32 — 0</title></circle><circle cx="241.5" cy="148" r="2.6" fill="#8A655C"><title>2 septembre 2026 à 22:36 — 0</title></circle><circle cx="312" cy="148" r="2.6" fill="#8A655C"><title>2 septembre 2026 à 22:58 — 0</title></circle></svg></div><div class="chart-card"><div class="chart-card-title">CM1</div><svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg"><line x1="30" y1="148" x2="312" y2="148" stroke="#e5e3da" stroke-width="1"></line><text x="24" y="151" font-size="9" fill="#999" text-anchor="end">0</text><line x1="30" y1="110.36363636363637" x2="312" y2="110.36363636363637" stroke="#e5e3da" stroke-width="1"></line><text x="24" y="113.36363636363637" font-size="9" fill="#999" text-anchor="end">6</text><line x1="30" y1="79" x2="312" y2="79" stroke="#e5e3da" stroke-width="1"></line><text x="24" y="82" font-size="9" fill="#999" text-anchor="end">11</text><line x1="30" y1="41.36363636363636" x2="312" y2="41.36363636363636" stroke="#e5e3da" stroke-width="1"></line><text x="24" y="44.36363636363636" font-size="9" fill="#999" text-anchor="end">17</text><line x1="30" y1="10" x2="312" y2="10" stroke="#e5e3da" stroke-width="1"></line><text x="24" y="13" font-size="9" fill="#999" text-anchor="end">22</text><text x="30" y="164" font-size="8.5" fill="#999" text-anchor="middle">02/09</text><text x="100.5" y="164" font-size="8.5" fill="#999" text-anchor="middle">02/09</text><text x="171" y="164" font-size="8.5" fill="#999" text-anchor="middle">02/09</text><text x="241.5" y="164" font-size="8.5" fill="#999" text-anchor="middle">02/09</text><text x="312" y="164" font-size="8.5" fill="#999" text-anchor="middle">02/09</text><path d="M30,110.36363636363637 L100.5,116.63636363636364 L171,122.9090909090909 L241.5,129.1818181818182 L312,135.45454545454547 " fill="none" stroke="#b4b2a9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="110.36363636363637" r="2.6" fill="#b4b2a9"><title>2 septembre 2026 à 22:25 — 6</title></circle><circle cx="100.5" cy="116.63636363636364" r="2.6" fill="#b4b2a9"><title>2 septembre 2026 à 22:28 — 5</title></circle><circle cx="171" cy="122.9090909090909" r="2.6" fill="#b4b2a9"><title>2 septembre 2026 à 22:32 — 4</title></circle><circle cx="241.5" cy="129.1818181818182" r="2.6" fill="#b4b2a9"><title>2 septembre 2026 à 22:36 — 3</title></circle><circle cx="312" cy="135.45454545454547" r="2.6" fill="#b4b2a9"><title>2 septembre 2026 à 22:58 — 2</title></circle><path d="M30,97.81818181818181 L100.5,97.81818181818181 L171,104.0909090909091 L241.5,104.0909090909091 L312,97.81818181818181 " fill="none" stroke="#FAFA69" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="97.81818181818181" r="2.6" fill="#FAFA69"><title>2 septembre 2026 à 22:25 — 8</title></circle><circle cx="100.5" cy="97.81818181818181" r="2.6" fill="#FAFA69"><title>2 septembre 2026 à 22:28 — 8</title></circle><circle cx="171" cy="104.0909090909091" r="2.6" fill="#FAFA69"><title>2 septembre 2026 à 22:32 — 7</title></circle><circle cx="241.5" cy="104.0909090909091" r="2.6" fill="#FAFA69"><title>2 septembre 2026 à 22:36 — 7</title></circle><circle cx="312" cy="97.81818181818181" r="2.6" fill="#FAFA69"><title>2 septembre 2026 à 22:58 — 8</title></circle><path d="M30,79 L100.5,91.54545454545453 L171,79 L241.5,60.18181818181819 L312,60.18181818181819 " fill="none" stroke="#FFBC71" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="79" r="2.6" fill="#FFBC71"><title>2 septembre 2026 à 22:25 — 11</title></circle><circle cx="100.5" cy="91.54545454545453" r="2.6" fill="#FFBC71"><title>2 septembre 2026 à 22:28 — 9</title></circle><circle cx="171" cy="79" r="2.6" fill="#FFBC71"><title>2 septembre 2026 à 22:32 — 11</title></circle><circle cx="241.5" cy="60.18181818181819" r="2.6" fill="#FFBC71"><title>2 septembre 2026 à 22:36 — 14</title></circle><circle cx="312" cy="60.18181818181819" r="2.6" fill="#FFBC71"><title>2 septembre 2026 à 22:58 — 14</title></circle><path d="M30,35.09090909090908 L100.5,28.818181818181813 L171,41.36363636363636 L241.5,28.818181818181813 L312,35.09090909090908 " fill="none" stroke="#6AB079" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="35.09090909090908" r="2.6" fill="#6AB079"><title>2 septembre 2026 à 22:25 — 18</title></circle><circle cx="100.5" cy="28.818181818181813" r="2.6" fill="#6AB079"><title>2 septembre 2026 à 22:28 — 19</title></circle><circle cx="171" cy="41.36363636363636" r="2.6" fill="#6AB079"><title>2 septembre 2026 à 22:32 — 17</title></circle><circle cx="241.5" cy="28.818181818181813" r="2.6" fill="#6AB079"><title>2 septembre 2026 à 22:36 — 19</title></circle><circle cx="312" cy="35.09090909090908" r="2.6" fill="#6AB079"><title>2 septembre 2026 à 22:58 — 18</title></circle><path d="M30,66.45454545454545 L100.5,60.18181818181819 L171,47.63636363636364 L241.5,79 L312,72.72727272727273 " fill="none" stroke="#83ABE6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="66.45454545454545" r="2.6" fill="#83ABE6"><title>2 septembre 2026 à 22:25 — 13</title></circle><circle cx="100.5" cy="60.18181818181819" r="2.6" fill="#83ABE6"><title>2 septembre 2026 à 22:28 — 14</title></circle><circle cx="171" cy="47.63636363636364" r="2.6" fill="#83ABE6"><title>2 septembre 2026 à 22:32 — 16</title></circle><circle cx="241.5" cy="79" r="2.6" fill="#83ABE6"><title>2 septembre 2026 à 22:36 — 11</title></circle><circle cx="312" cy="72.72727272727273" r="2.6" fill="#83ABE6"><title>2 septembre 2026 à 22:58 — 12</title></circle><path d="M30,91.54545454545453 L100.5,85.27272727272728 L171,85.27272727272728 L241.5,79 L312,79 " fill="none" stroke="#8A655C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="91.54545454545453" r="2.6" fill="#8A655C"><title>2 septembre 2026 à 22:25 — 9</title></circle><circle cx="100.5" cy="85.27272727272728" r="2.6" fill="#8A655C"><title>2 septembre 2026 à 22:28 — 10</title></circle><circle cx="171" cy="85.27272727272728" r="2.6" fill="#8A655C"><title>2 septembre 2026 à 22:32 — 10</title></circle><circle cx="241.5" cy="79" r="2.6" fill="#8A655C"><title>2 septembre 2026 à 22:36 — 11</title></circle><circle cx="312" cy="79" r="2.6" fill="#8A655C"><title>2 septembre 2026 à 22:58 — 11</title></circle></svg></div><div class="chart-card"><div class="chart-card-title">CM2</div><svg viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg"><line x1="30" y1="148" x2="312" y2="148" stroke="#e5e3da" stroke-width="1"></line><text x="24" y="151" font-size="9" fill="#999" text-anchor="end">0</text><line x1="30" y1="115.14285714285714" x2="312" y2="115.14285714285714" stroke="#e5e3da" stroke-width="1"></line><text x="24" y="118.14285714285714" font-size="9" fill="#999" text-anchor="end">5</text><line x1="30" y1="75.71428571428571" x2="312" y2="75.71428571428571" stroke="#e5e3da" stroke-width="1"></line><text x="24" y="78.71428571428571" font-size="9" fill="#999" text-anchor="end">11</text><line x1="30" y1="42.85714285714286" x2="312" y2="42.85714285714286" stroke="#e5e3da" stroke-width="1"></line><text x="24" y="45.85714285714286" font-size="9" fill="#999" text-anchor="end">16</text><line x1="30" y1="10" x2="312" y2="10" stroke="#e5e3da" stroke-width="1"></line><text x="24" y="13" font-size="9" fill="#999" text-anchor="end">21</text><text x="30" y="164" font-size="8.5" fill="#999" text-anchor="middle">02/09</text><text x="100.5" y="164" font-size="8.5" fill="#999" text-anchor="middle">02/09</text><text x="171" y="164" font-size="8.5" fill="#999" text-anchor="middle">02/09</text><text x="241.5" y="164" font-size="8.5" fill="#999" text-anchor="middle">02/09</text><text x="312" y="164" font-size="8.5" fill="#999" text-anchor="middle">02/09</text><path d="M30,128.28571428571428 L100.5,134.85714285714286 L171,141.42857142857142 L241.5,141.42857142857142 L312,148 " fill="none" stroke="#b4b2a9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="128.28571428571428" r="2.6" fill="#b4b2a9"><title>2 septembre 2026 à 22:25 — 3</title></circle><circle cx="100.5" cy="134.85714285714286" r="2.6" fill="#b4b2a9"><title>2 septembre 2026 à 22:28 — 2</title></circle><circle cx="171" cy="141.42857142857142" r="2.6" fill="#b4b2a9"><title>2 septembre 2026 à 22:32 — 1</title></circle><circle cx="241.5" cy="141.42857142857142" r="2.6" fill="#b4b2a9"><title>2 septembre 2026 à 22:36 — 1</title></circle><circle cx="312" cy="148" r="2.6" fill="#b4b2a9"><title>2 septembre 2026 à 22:58 — 0</title></circle><path d="M30,42.85714285714286 L100.5,29.714285714285722 L171,42.85714285714286 L241.5,62.57142857142857 L312,62.57142857142857 " fill="none" stroke="#FAFA69" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="42.85714285714286" r="2.6" fill="#FAFA69"><title>2 septembre 2026 à 22:25 — 16</title></circle><circle cx="100.5" cy="29.714285714285722" r="2.6" fill="#FAFA69"><title>2 septembre 2026 à 22:28 — 18</title></circle><circle cx="171" cy="42.85714285714286" r="2.6" fill="#FAFA69"><title>2 septembre 2026 à 22:32 — 16</title></circle><circle cx="241.5" cy="62.57142857142857" r="2.6" fill="#FAFA69"><title>2 septembre 2026 à 22:36 — 13</title></circle><circle cx="312" cy="62.57142857142857" r="2.6" fill="#FAFA69"><title>2 septembre 2026 à 22:58 — 13</title></circle><path d="M30,108.57142857142858 L100.5,115.14285714285714 L171,95.42857142857143 L241.5,75.71428571428571 L312,69.14285714285715 " fill="none" stroke="#FFBC71" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="108.57142857142858" r="2.6" fill="#FFBC71"><title>2 septembre 2026 à 22:25 — 6</title></circle><circle cx="100.5" cy="115.14285714285714" r="2.6" fill="#FFBC71"><title>2 septembre 2026 à 22:28 — 5</title></circle><circle cx="171" cy="95.42857142857143" r="2.6" fill="#FFBC71"><title>2 septembre 2026 à 22:32 — 8</title></circle><circle cx="241.5" cy="75.71428571428571" r="2.6" fill="#FFBC71"><title>2 septembre 2026 à 22:36 — 11</title></circle><circle cx="312" cy="69.14285714285715" r="2.6" fill="#FFBC71"><title>2 septembre 2026 à 22:58 — 12</title></circle><path d="M30,69.14285714285715 L100.5,56 L171,69.14285714285715 L241.5,95.42857142857143 L312,95.42857142857143 " fill="none" stroke="#6AB079" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="69.14285714285715" r="2.6" fill="#6AB079"><title>2 septembre 2026 à 22:25 — 12</title></circle><circle cx="100.5" cy="56" r="2.6" fill="#6AB079"><title>2 septembre 2026 à 22:28 — 14</title></circle><circle cx="171" cy="69.14285714285715" r="2.6" fill="#6AB079"><title>2 septembre 2026 à 22:32 — 12</title></circle><circle cx="241.5" cy="95.42857142857143" r="2.6" fill="#6AB079"><title>2 septembre 2026 à 22:36 — 8</title></circle><circle cx="312" cy="95.42857142857143" r="2.6" fill="#6AB079"><title>2 septembre 2026 à 22:58 — 8</title></circle><path d="M30,82.28571428571429 L100.5,95.42857142857143 L171,82.28571428571429 L241.5,56 L312,56 " fill="none" stroke="#83ABE6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="82.28571428571429" r="2.6" fill="#83ABE6"><title>2 septembre 2026 à 22:25 — 10</title></circle><circle cx="100.5" cy="95.42857142857143" r="2.6" fill="#83ABE6"><title>2 septembre 2026 à 22:28 — 8</title></circle><circle cx="171" cy="82.28571428571429" r="2.6" fill="#83ABE6"><title>2 septembre 2026 à 22:32 — 10</title></circle><circle cx="241.5" cy="56" r="2.6" fill="#83ABE6"><title>2 septembre 2026 à 22:36 — 14</title></circle><circle cx="312" cy="56" r="2.6" fill="#83ABE6"><title>2 septembre 2026 à 22:58 — 14</title></circle><path d="M30,36.28571428571428 L100.5,36.28571428571428 L171,36.28571428571428 L241.5,36.28571428571428 L312,36.28571428571428 " fill="none" stroke="#8A655C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="36.28571428571428" r="2.6" fill="#8A655C"><title>2 septembre 2026 à 22:25 — 17</title></circle><circle cx="100.5" cy="36.28571428571428" r="2.6" fill="#8A655C"><title>2 septembre 2026 à 22:28 — 17</title></circle><circle cx="171" cy="36.28571428571428" r="2.6" fill="#8A655C"><title>2 septembre 2026 à 22:32 — 17</title></circle><circle cx="241.5" cy="36.28571428571428" r="2.6" fill="#8A655C"><title>2 septembre 2026 à 22:36 — 17</title></circle><circle cx="312" cy="36.28571428571428" r="2.6" fill="#8A655C"><title>2 septembre 2026 à 22:58 — 17</title></circle></svg></div><div class="chart-card total-chart"><div class="chart-card-title">Tous niveaux confondus (CP à CM2)</div><svg viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg"><line x1="30" y1="178" x2="672" y2="178" stroke="#e5e3da" stroke-width="1"></line><text x="24" y="181" font-size="9" fill="#999" text-anchor="end">0</text><line x1="30" y1="136" x2="672" y2="136" stroke="#e5e3da" stroke-width="1"></line><text x="24" y="139" font-size="9" fill="#999" text-anchor="end">32</text><line x1="30" y1="94" x2="672" y2="94" stroke="#e5e3da" stroke-width="1"></line><text x="24" y="97" font-size="9" fill="#999" text-anchor="end">64</text><line x1="30" y1="52" x2="672" y2="52" stroke="#e5e3da" stroke-width="1"></line><text x="24" y="55" font-size="9" fill="#999" text-anchor="end">96</text><line x1="30" y1="10" x2="672" y2="10" stroke="#e5e3da" stroke-width="1"></line><text x="24" y="13" font-size="9" fill="#999" text-anchor="end">128</text><text x="30" y="194" font-size="8.5" fill="#999" text-anchor="middle">02/09</text><text x="190.5" y="194" font-size="8.5" fill="#999" text-anchor="middle">02/09</text><text x="351" y="194" font-size="8.5" fill="#999" text-anchor="middle">02/09</text><text x="511.5" y="194" font-size="8.5" fill="#999" text-anchor="middle">02/09</text><text x="672" y="194" font-size="8.5" fill="#999" text-anchor="middle">02/09</text><path d="M30,136 L190.5,145.1875 L351,151.75 L511.5,155.6875 L672,160.9375 " fill="none" stroke="#b4b2a9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="136" r="2.6" fill="#b4b2a9"><title>2 septembre 2026 à 22:25 — 32</title></circle><circle cx="190.5" cy="145.1875" r="2.6" fill="#b4b2a9"><title>2 septembre 2026 à 22:28 — 25</title></circle><circle cx="351" cy="151.75" r="2.6" fill="#b4b2a9"><title>2 septembre 2026 à 22:32 — 20</title></circle><circle cx="511.5" cy="155.6875" r="2.6" fill="#b4b2a9"><title>2 septembre 2026 à 22:36 — 17</title></circle><circle cx="672" cy="160.9375" r="2.6" fill="#b4b2a9"><title>2 septembre 2026 à 22:58 — 13</title></circle><path d="M30,57.25 L190.5,74.3125 L351,74.3125 L511.5,82.1875 L672,87.4375 " fill="none" stroke="#FAFA69" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="57.25" r="2.6" fill="#FAFA69"><title>2 septembre 2026 à 22:25 — 92</title></circle><circle cx="190.5" cy="74.3125" r="2.6" fill="#FAFA69"><title>2 septembre 2026 à 22:28 — 79</title></circle><circle cx="351" cy="74.3125" r="2.6" fill="#FAFA69"><title>2 septembre 2026 à 22:32 — 79</title></circle><circle cx="511.5" cy="82.1875" r="2.6" fill="#FAFA69"><title>2 septembre 2026 à 22:36 — 73</title></circle><circle cx="672" cy="87.4375" r="2.6" fill="#FAFA69"><title>2 septembre 2026 à 22:58 — 69</title></circle><path d="M30,61.1875 L190.5,53.3125 L351,50.6875 L511.5,36.25 L672,32.3125 " fill="none" stroke="#FFBC71" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="61.1875" r="2.6" fill="#FFBC71"><title>2 septembre 2026 à 22:25 — 89</title></circle><circle cx="190.5" cy="53.3125" r="2.6" fill="#FFBC71"><title>2 septembre 2026 à 22:28 — 95</title></circle><circle cx="351" cy="50.6875" r="2.6" fill="#FFBC71"><title>2 septembre 2026 à 22:32 — 97</title></circle><circle cx="511.5" cy="36.25" r="2.6" fill="#FFBC71"><title>2 septembre 2026 à 22:36 — 108</title></circle><circle cx="672" cy="32.3125" r="2.6" fill="#FFBC71"><title>2 septembre 2026 à 22:58 — 111</title></circle><path d="M30,88.75 L190.5,71.6875 L351,73 L511.5,78.25 L672,73 " fill="none" stroke="#6AB079" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="88.75" r="2.6" fill="#6AB079"><title>2 septembre 2026 à 22:25 — 68</title></circle><circle cx="190.5" cy="71.6875" r="2.6" fill="#6AB079"><title>2 septembre 2026 à 22:28 — 81</title></circle><circle cx="351" cy="73" r="2.6" fill="#6AB079"><title>2 septembre 2026 à 22:32 — 80</title></circle><circle cx="511.5" cy="78.25" r="2.6" fill="#6AB079"><title>2 septembre 2026 à 22:36 — 76</title></circle><circle cx="672" cy="73" r="2.6" fill="#6AB079"><title>2 septembre 2026 à 22:58 — 80</title></circle><path d="M30,125.5 L190.5,125.5 L351,120.25 L511.5,118.9375 L672,117.625 " fill="none" stroke="#83ABE6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="125.5" r="2.6" fill="#83ABE6"><title>2 septembre 2026 à 22:25 — 40</title></circle><circle cx="190.5" cy="125.5" r="2.6" fill="#83ABE6"><title>2 septembre 2026 à 22:28 — 40</title></circle><circle cx="351" cy="120.25" r="2.6" fill="#83ABE6"><title>2 septembre 2026 à 22:32 — 44</title></circle><circle cx="511.5" cy="118.9375" r="2.6" fill="#83ABE6"><title>2 septembre 2026 à 22:36 — 45</title></circle><circle cx="672" cy="117.625" r="2.6" fill="#83ABE6"><title>2 septembre 2026 à 22:58 — 46</title></circle><path d="M30,143.875 L190.5,142.5625 L351,142.5625 L511.5,141.25 L672,141.25 " fill="none" stroke="#8A655C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="30" cy="143.875" r="2.6" fill="#8A655C"><title>2 septembre 2026 à 22:25 — 26</title></circle><circle cx="190.5" cy="142.5625" r="2.6" fill="#8A655C"><title>2 septembre 2026 à 22:28 — 27</title></circle><circle cx="351" cy="142.5625" r="2.6" fill="#8A655C"><title>2 septembre 2026 à 22:32 — 27</title></circle><circle cx="511.5" cy="141.25" r="2.6" fill="#8A655C"><title>2 septembre 2026 à 22:36 — 28</title></circle><circle cx="672" cy="141.25" r="2.6" fill="#8A655C"><title>2 septembre 2026 à 22:58 — 28</title></circle></svg></div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const lois = [
+  { main: "Je dois être respectueux, honnête et poli avec tout le monde.", sub: "Personne n'a le droit de manquer de respect aux autres : insulter, mentir ou se moquer." },
+  { main: "Je dois bien me comporter envers les autres et rejeter toute forme de violence.", sub: "Personne n'a le droit d'utiliser la violence : ne pas taper, ni pousser, ni se battre." },
+  { main: "Je dois utiliser un langage approprié et m'exprimer avec gentillesse et bienveillance.", sub: "Personne n'a le droit d'utiliser des paroles blessantes envers les autres." },
+  { main: "Je viens à l'école pour apprendre et faire du mieux possible.", sub: "Personne n'a le droit de me déranger, ni de m'empêcher d'apprendre." },
+  { main: "Je dois me déplacer en marchant dans le calme et en silence.", sub: "Personne n'a le droit de se déplacer en courant, bruyamment ni sans autorisation." },
+  { main: "Je dois avoir mon matériel et en prendre soin, tout comme de celui des autres.", sub: "Personne n'a le droit d'abîmer mon matériel, celui des autres ou celui de l'école." },
+  { main: "Je dois porter une tenue convenable et adaptée au cadre scolaire.", sub: "Personne n'a le droit de garder sa capuche ou sa casquette dans l'enceinte de l'école." },
+  { main: "Je respecte mon école et la nature en gardant les lieux propres et en bon état.", sub: "Personne n'a le droit de salir ou dégrader l'école, de jeter des déchets par terre ou de gaspiller et jouer avec l'eau." },
+  { main: "Je dois soutenir et aider mes camarades autant que possible.", sub: "Personne n'a le droit d'ignorer quelqu'un en détresse." },
+  { main: "L'école est laïque, tolérante et accepte les différences.", sub: "Personne n'a le droit d'imposer ses idées ou ses croyances ni de critiquer celles des autres." }
+];
+
+const beltColors = ["#b4b2a9","#FAFA69","#FFBC71","#6AB079","#83ABE6","#8A655C"];
+const beltTextColors = ["#2c2c2a","#2c2c2a","#2c2c2a","#12331b","#0c2c53","#fff"];
+const loiColors = ["#00B0F0","#FFC000","#7030A0","#92D050","#F987FC","#0039AC","#FFFF00","#FF9900","#00B050","#FF0000"];
+const loiTextColors = ["#fff","#2c2c2a","#fff","#12331b","#2c2c2a","#fff","#2c2c2a","#2c2c2a","#fff","#fff"];
+
+const belts = [
+  { name: "Blanche", class: "blanche",
+    duties: ["Venir à l'heure à l'école", "Faire de mon mieux pour être élève dans mon travail et dans ma relation aux autres", "Se rendre calmement en classe"],
+    rights: ["Participer à la vie de la classe", "Donner mon avis en réunion", "Avoir le droit de présenter une idée, un objet, un exposé à ma classe", "Avoir accès aux caisses de jeux"] },
+  { name: "Jaune", class: "jaune",
+    duties: ["Rentrer en classe calmement", "Aller aux toilettes tranquillement", "Faire des efforts pour respecter les règles et les lois de l'école", "Me ranger calmement à la sonnerie"],
+    rights: ["Annoncer la mise en rang", "Avoir accès aux caisses de ballons", "Arroser les plantes du parvis de direction"] },
+  { name: "Orange", class: "orange",
+    duties: ["Travailler en essayant de ne pas gêner", "Tenir compte des décisions du conseil", "Essayer de régler mes conflits par la parole ou la critique du conseil", "Descendre tranquillement les escaliers", "Essayer d'aider un ou une camarade", "Respecter quelques lois et règles", "Ranger mes affaires", "Essayer de classer mes documents"],
+    rights: ["Arbitrer les jeux collectifs en récréation", "Descendre de manière autonome en récréations", "Apprendre à présider le conseil"] },
+  { name: "Verte", class: "verte",
+    duties: ["Travailler sans gêner", "Respecter les lois et les règles", "Régler mes conflits calmement", "Aider un ou une camarade", "Être capable de travailler en groupe", "Oser m'exprimer en réunion", "Savoir classer mes documents", "Prendre part à la vie de la collectivité"],
+    rights: ["Circuler de manière autonome dans l'école", "Monter de manière autonome après les récréations", "Participer à des ateliers autonomes animés par des élèves de ceinture bleue ou marron"] },
+  { name: "Bleue", class: "bleue",
+    duties: ["Travailler en groupe sans gêner", "Aider mes camarades à classer leurs documents"],
+    rights: ["Présider le conseil de la classe", "Animer un atelier bleu", "Monter de manière autonome à l'accueil de l'après-midi"] },
+  { name: "Marron", class: "marron",
+    duties: ["Être citoyen actif, citoyenne active et responsable"],
+    rights: ["Présider le grand conseil des élèves", "Choisir son métier en premier", "Rester en classe pendant les récréations en présence d'un adulte", "Descendre de manière autonome aux heures de récréations"] }
+];
+
+let currentBelt = 0;
+const levels = ["CP", "CE1", "CE2", "CM1", "CM2"];
+let counts = belts.map(() => [0, 0, 0, 0, 0]);
+let lastUpdatedDate = null;
+
+// --- Historique de tous les enregistrements (pour les courbes de progression) ---
+// history : tableau d'entrées { date, time, counts } — un point est ajouté à CHAQUE clic sur
+// « Enregistrer la mise à jour », avec la date (et l'heure) exactes de l'enregistrement.
+// Rien n'est écrasé : tous les enregistrements successifs sont conservés pour tracer les courbes.
+let history = [];
+
+function nowTimeHHMM() {
+  const d = new Date();
+  return String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0');
+}
+
+function recordHistorySnapshot() {
+  const dateISO = todayISO();
+  const snapshot = {
+    date: dateISO,
+    time: nowTimeHHMM(),
+    counts: counts.map(row => row.slice())
+  };
+  history.push(snapshot);
+  // tri chronologique (au cas où l'horloge de l'appareil aurait changé entre deux enregistrements)
+  history.sort((a, b) => (a.date + 'T' + a.time).localeCompare(b.date + 'T' + b.time));
+}
+
+function pointLabel(entry) {
+  // Étiquette affichée sur l'axe des dates : jour/mois, ex. "12/09"
+  const [y, m, d] = entry.date.split('-');
+  return d + '/' + m;
+}
+
+function showTab(tab) {
+  document.getElementById('viewLois').classList.toggle('hidden', tab !== 'lois');
+  document.getElementById('viewBelts').classList.toggle('hidden', tab !== 'belts');
+  document.getElementById('viewCounters').classList.toggle('hidden', tab !== 'counters');
+  document.getElementById('viewPercent').classList.toggle('hidden', tab !== 'percent');
+  document.getElementById('viewInfo').classList.toggle('hidden', tab !== 'info');
+  document.getElementById('tabLois').classList.toggle('active', tab === 'lois');
+  document.getElementById('tabBelts').classList.toggle('active', tab === 'belts');
+  document.getElementById('tabCounters').classList.toggle('active', tab === 'counters');
+  document.getElementById('tabPercent').classList.toggle('active', tab === 'percent');
+  document.getElementById('tabInfo').classList.toggle('active', tab === 'info');
+}
+
+function renderLois() {
+  const list = document.getElementById('loisList');
+  list.innerHTML = '';
+  lois.forEach((l, i) => {
+    const row = document.createElement('div');
+    row.className = 'law-row';
+    row.innerHTML = '<div class="law-num" style="background:' + loiColors[i] + ';color:' + loiTextColors[i] + '">Loi ' + (i + 1) + '</div>' +
+      '<div class="law-body"><div class="law-main">' + l.main + '</div><div class="law-sub">' + l.sub + '</div></div>';
+    list.appendChild(row);
+  });
+}
+
+function renderBelts() {
+  const beltsEl = document.getElementById('belts');
+  beltsEl.innerHTML = '';
+  belts.forEach((b, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'belt-btn ' + b.class + (i === currentBelt ? ' active' : '');
+    btn.textContent = 'Ceinture ' + b.name;
+    btn.onclick = () => { currentBelt = i; renderBelts(); };
+    beltsEl.appendChild(btn);
+  });
+
+  const b = belts[currentBelt];
+  document.getElementById('beltTitle').textContent = 'Ceinture ' + b.name;
+  document.getElementById('progressFill').style.width = Math.round(((currentBelt + 1) / belts.length) * 100) + '%';
+  document.getElementById('progressFill').style.background = beltColors[currentBelt];
+
+  const dutiesList = document.getElementById('dutiesList');
+  dutiesList.innerHTML = '';
+  b.duties.forEach(d => { const li = document.createElement('li'); li.textContent = d; dutiesList.appendChild(li); });
+
+  const rightsList = document.getElementById('rightsList');
+  rightsList.innerHTML = '';
+  b.rights.forEach(r => { const li = document.createElement('li'); li.textContent = r; rightsList.appendChild(li); });
+}
+
+function formatDateFR(iso) {
+  if (!iso) return '';
+  const d = new Date(iso + 'T00:00:00');
+  return d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+
+function todayISO() {
+  const d = new Date();
+  return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+}
+
+function renderCounters() {
+  const body = document.getElementById('countersBody');
+  body.innerHTML = '';
+  belts.forEach((b, i) => {
+    const row = document.createElement('tr');
+    let cellsHTML = '<td class="belt-cell"><span class="belt-dot ' + b.class + '"></span>' + b.name + '</td>';
+    for (let lvl = 0; lvl < levels.length; lvl++) {
+      cellsHTML +=
+        '<td><div class="cell-counter">' +
+          '<button onclick="changeCount(' + i + ',' + lvl + ',-1)" aria-label="Retirer un élève">−</button>' +
+          '<input class="cell-value-input" id="count-' + i + '-' + lvl + '" type="number" inputmode="numeric" pattern="[0-9]*" min="0" step="1" value="' + counts[i][lvl] + '" ' +
+            'onfocus="this.select()" ' +
+            'oninput="setCount(' + i + ',' + lvl + ',this.value)" ' +
+            'onchange="setCount(' + i + ',' + lvl + ',this.value)" ' +
+            'aria-label="Nombre d\u2019élèves">' +
+          '<button onclick="changeCount(' + i + ',' + lvl + ',1)" aria-label="Ajouter un élève">+</button>' +
+        '</div></td>';
+    }
+    cellsHTML += '<td class="total-cell" id="beltTotal-' + i + '">' + rowTotal(i) + '</td>';
+    row.innerHTML = cellsHTML;
+    body.appendChild(row);
+  });
+  updateTotals();
+  document.getElementById('lastUpdated').textContent = lastUpdatedDate
+    ? 'Dernière mise à jour : ' + formatDateFR(lastUpdatedDate)
+    : 'Pas encore enregistré';
+}
+
+function rowTotal(i) {
+  return counts[i].reduce((a, b) => a + b, 0);
+}
+
+function updateTotals() {
+  belts.forEach((b, i) => {
+    const el = document.getElementById('beltTotal-' + i);
+    if (el) el.textContent = rowTotal(i);
+  });
+  let grand = 0;
+  for (let lvl = 0; lvl < levels.length; lvl++) {
+    let levelSum = 0;
+    for (let i = 0; i < belts.length; i++) levelSum += counts[i][lvl];
+    grand += levelSum;
+    const el = document.getElementById('levelTotal-' + lvl);
+    if (el) el.textContent = levelSum;
+  }
+  document.getElementById('grandTotal').textContent = grand;
+  renderPercentTable();
+  renderPieLegend();
+  renderPieCharts();
+}
+
+// --- Pourcentages par niveau (tableau + camemberts), recalculés à chaque saisie ---
+
+function formatPct(pct) {
+  const rounded = Math.round(pct * 10) / 10;
+  return (Number.isInteger(rounded) ? rounded.toString() : rounded.toFixed(1).replace('.', ',')) + ' %';
+}
+
+function levelTotals() {
+  return levels.map((_, lvl) => belts.reduce((sum, _, i) => sum + counts[i][lvl], 0));
+}
+
+function renderPercentTable() {
+  const body = document.getElementById('percentBody');
+  if (!body) return;
+  const totals = levelTotals();
+  body.innerHTML = belts.map((b, i) => {
+    let cells = '<td class="belt-cell"><span class="belt-dot ' + b.class + '"></span>' + b.name + '</td>';
+    for (let lvl = 0; lvl < levels.length; lvl++) {
+      const total = totals[lvl];
+      const pct = total > 0 ? (counts[i][lvl] / total * 100) : 0;
+      cells += '<td>' + (total > 0 ? formatPct(pct) : '—') + '</td>';
+    }
+    return '<tr>' + cells + '</tr>';
+  }).join('');
+  for (let lvl = 0; lvl < levels.length; lvl++) {
+    const el = document.getElementById('percentColTotal-' + lvl);
+    if (el) el.textContent = totals[lvl] > 0 ? '100 %' : '—';
+  }
+}
+
+function renderPieLegend() {
+  const legend = document.getElementById('pieLegend');
+  if (!legend) return;
+  legend.innerHTML = belts.map((b, i) =>
+    '<span class="legend-item"><span class="legend-dot" style="background:' + beltColors[i] + (i === 0 ? ';border:1px solid #b4b2a9' : '') + '"></span>Ceinture ' + b.name + '</span>'
+  ).join('');
+}
+
+function svgPieChart(entries, size) {
+  const total = entries.reduce((a, e) => a + e.value, 0);
+  const r = size / 2 - 3;
+  const cx = size / 2, cy = size / 2;
+  const fontSize = Math.max(9, Math.round(size * 0.078));
+  let svg = '<svg viewBox="0 0 ' + size + ' ' + size + '" xmlns="http://www.w3.org/2000/svg">';
+
+  if (total === 0) {
+    svg += '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="#f2f2f2" stroke="#e5e3da" stroke-width="1"/>';
+    svg += '</svg>';
+    return svg;
+  }
+
+  const nonZero = entries.filter(e => e.value > 0);
+  if (nonZero.length === 1) {
+    const only = nonZero[0];
+    const tip = only.label + ' — ' + only.value + ' élève(s) (100 %)';
+    svg += '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="' + only.color + '"><title>' + tip + '</title></circle>';
+    svg += '<text x="' + cx + '" y="' + cy + '" font-size="' + fontSize + '" font-weight="700" fill="' + only.textColor + '" text-anchor="middle" dominant-baseline="middle">100 %</text>';
+    svg += '</svg>';
+    return svg;
+  }
+
+  let startAngle = -Math.PI / 2;
+  entries.forEach(e => {
+    if (e.value <= 0) return;
+    const frac = e.value / total;
+    const angle = frac * Math.PI * 2;
+    const endAngle = startAngle + angle;
+    const x1 = cx + r * Math.cos(startAngle), y1 = cy + r * Math.sin(startAngle);
+    const x2 = cx + r * Math.cos(endAngle), y2 = cy + r * Math.sin(endAngle);
+    const largeArc = angle > Math.PI ? 1 : 0;
+    const d = 'M ' + cx + ' ' + cy + ' L ' + x1 + ' ' + y1 + ' A ' + r + ' ' + r + ' 0 ' + largeArc + ' 1 ' + x2 + ' ' + y2 + ' Z';
+    const pctLabel = Math.round(frac * 1000) / 10;
+    const tip = e.label + ' — ' + e.value + ' élève(s) (' + pctLabel + ' %)';
+    svg += '<path d="' + d + '" fill="' + e.color + '" stroke="#fff" stroke-width="1"><title>' + tip + '</title></path>';
+    if (frac >= 0.06) {
+      const midAngle = startAngle + angle / 2;
+      const labelR = r * 0.62;
+      const lx = cx + labelR * Math.cos(midAngle);
+      const ly = cy + labelR * Math.sin(midAngle);
+      const pctText = (Number.isInteger(pctLabel) ? pctLabel : pctLabel.toFixed(1).replace('.', ',')) + ' %';
+      svg += '<text x="' + lx + '" y="' + ly + '" font-size="' + fontSize + '" font-weight="700" fill="' + e.textColor + '" text-anchor="middle" dominant-baseline="middle">' + pctText + '</text>';
+    }
+    startAngle = endAngle;
+  });
+
+  svg += '</svg>';
+  return svg;
+}
+
+function renderPieCharts() {
+  const grid = document.getElementById('pieChartsGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  levels.forEach((lvl, lvlIdx) => {
+    const entries = belts.map((b, i) => ({ value: counts[i][lvlIdx], color: beltColors[i], textColor: beltTextColors[i], label: 'Ceinture ' + b.name }));
+    const total = entries.reduce((a, e) => a + e.value, 0);
+    const card = document.createElement('div');
+    card.className = 'chart-card';
+    card.innerHTML = '<div class="chart-card-title">' + lvl + (total > 0 ? ' (' + total + ' élèves)' : '') + '</div>' +
+      (total > 0 ? svgPieChart(entries, 120) : '<div class="chart-empty">Aucun élève renseigné</div>');
+    grid.appendChild(card);
+  });
+}
+
+function changeCount(i, lvl, delta) {
+  counts[i][lvl] = Math.max(0, counts[i][lvl] + delta);
+  document.getElementById('count-' + i + '-' + lvl).value = counts[i][lvl];
+  document.getElementById('beltTotal-' + i).textContent = rowTotal(i);
+  updateTotals();
+  document.getElementById('saveStatus').textContent = '';
+}
+
+function setCount(i, lvl, rawValue) {
+  // Saisie directe au clavier numérique : on nettoie la valeur et on l'applique immédiatement.
+  let value = parseInt(rawValue, 10);
+  if (isNaN(value) || value < 0) value = 0;
+  counts[i][lvl] = value;
+  const input = document.getElementById('count-' + i + '-' + lvl);
+  if (input && input.value !== String(value)) input.value = value;
+  document.getElementById('beltTotal-' + i).textContent = rowTotal(i);
+  updateTotals();
+  document.getElementById('saveStatus').textContent = '';
+}
+
+async function loadCounters() {
+  try {
+    const raw = localStorage.getItem('belt-counters-henriwallon');
+    if (raw) {
+      const data = JSON.parse(raw);
+      if (Array.isArray(data.counts) && data.counts.length === 6 && Array.isArray(data.counts[0])) {
+        counts = data.counts;
+      }
+      lastUpdatedDate = data.lastUpdated || null;
+      if (Array.isArray(data.history)) {
+        history = data.history;
+      }
+    }
+  } catch (e) {
+    // Aucune donnée enregistrée pour l'instant, ou stockage local indisponible : on garde les compteurs à zéro.
+  }
+  renderCounters();
+  renderCharts();
+}
+
+async function saveCounters() {
+  const statusEl = document.getElementById('saveStatus');
+  lastUpdatedDate = todayISO();
+  recordHistorySnapshot();
+  try {
+    localStorage.setItem('belt-counters-henriwallon', JSON.stringify({ counts, lastUpdated: lastUpdatedDate, history }));
+    statusEl.textContent = 'Enregistré ✓ (point ajouté aux graphiques)';
+    document.getElementById('lastUpdated').textContent = 'Dernière mise à jour : ' + formatDateFR(lastUpdatedDate);
+    renderCharts();
+  } catch (e) {
+    statusEl.textContent = "Échec de l'enregistrement (stockage local indisponible dans ce navigateur)";
+  }
+}
+
+function resetCharts() {
+  const ok = window.confirm("Réinitialiser les graphiques ? Tout l'historique des enregistrements sera définitivement effacé (les compteurs actuels ne sont pas touchés).");
+  if (!ok) return;
+  history = [];
+  try {
+    localStorage.setItem('belt-counters-henriwallon', JSON.stringify({ counts, lastUpdated: lastUpdatedDate, history }));
+  } catch (e) {
+    // stockage local indisponible : la remise à zéro reste effective pour la session en cours
+  }
+  renderCharts();
+}
+
+// --- Rendu des courbes (SVG, sans dépendance externe) ---
+
+function svgLineChart(seriesList, xLabels, tooltipLabels, width, height) {
+  const padL = 30, padR = 8, padT = 10, padB = 22;
+  const w = width - padL - padR;
+  const h = height - padT - padB;
+  let maxY = 1;
+  seriesList.forEach(s => s.values.forEach(v => { if (v > maxY) maxY = v; }));
+  maxY = Math.ceil(maxY * 1.15) || 1;
+  const n = xLabels.length;
+  const xStep = n > 1 ? w / (n - 1) : 0;
+  const xAt = i => padL + (n > 1 ? i * xStep : w / 2);
+  const yAt = v => padT + h - (v / maxY) * h;
+
+  let svg = '<svg viewBox="0 0 ' + width + ' ' + height + '" xmlns="http://www.w3.org/2000/svg">';
+
+  // grille horizontale (4 lignes)
+  const gridLines = 4;
+  for (let g = 0; g <= gridLines; g++) {
+    const val = Math.round((maxY / gridLines) * g);
+    const y = yAt(val);
+    svg += '<line x1="' + padL + '" y1="' + y + '" x2="' + (width - padR) + '" y2="' + y + '" stroke="#e5e3da" stroke-width="1"/>';
+    svg += '<text x="' + (padL - 6) + '" y="' + (y + 3) + '" font-size="9" fill="#999" text-anchor="end">' + val + '</text>';
+  }
+
+  // axe X : dates des enregistrements (on affiche jusqu'à ~6 étiquettes pour rester lisible)
+  const labelEvery = Math.max(1, Math.ceil(n / 6));
+  xLabels.forEach((lbl, i) => {
+    if (i % labelEvery === 0 || i === n - 1) {
+      svg += '<text x="' + xAt(i) + '" y="' + (height - 6) + '" font-size="8.5" fill="#999" text-anchor="middle">' + lbl + '</text>';
+    }
+  });
+
+  // courbes — un point par enregistrement effectué, dans l'ordre chronologique
+  seriesList.forEach(s => {
+    if (s.values.length === 0) return;
+    let path = '';
+    s.values.forEach((v, i) => {
+      const x = xAt(i), y = yAt(v);
+      path += (i === 0 ? 'M' : 'L') + x + ',' + y + ' ';
+    });
+    svg += '<path d="' + path + '" fill="none" stroke="' + s.color + '" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>';
+    s.values.forEach((v, i) => {
+      const tip = (tooltipLabels[i] || xLabels[i]) + ' — ' + v;
+      svg += '<circle cx="' + xAt(i) + '" cy="' + yAt(v) + '" r="2.6" fill="' + s.color + '"><title>' + tip + '</title></circle>';
+    });
+  });
+
+  svg += '</svg>';
+  return svg;
+}
+
+function renderChartLegend() {
+  const legend = document.getElementById('chartLegend');
+  legend.innerHTML = belts.map((b, i) =>
+    '<span class="legend-item"><span class="legend-dot" style="background:' + beltColors[i] + (i === 0 ? ';border:1px solid #b4b2a9' : '') + '"></span>Ceinture ' + b.name + '</span>'
+  ).join('');
+}
+
+function renderCharts() {
+  renderChartLegend();
+  const grid = document.getElementById('chartsGrid');
+  grid.innerHTML = '';
+
+  if (history.length === 0) {
+    grid.innerHTML = '<div class="chart-empty">Aucun historique pour le moment : cliquez sur « Enregistrer la mise à jour » pour commencer à alimenter les graphiques. Chaque enregistrement ajoute un nouveau point, daté, sur les courbes.</div>';
+    return;
+  }
+
+  const xLabels = history.map(h => pointLabel(h));
+  const tooltipLabels = history.map(h => formatDateFR(h.date) + ' à ' + h.time);
+
+  // Une carte par niveau de classe : une courbe par couleur de ceinture
+  levels.forEach((lvl, lvlIdx) => {
+    const seriesList = belts.map((b, beltIdx) => ({
+      color: beltColors[beltIdx],
+      values: history.map(h => (h.counts[beltIdx] ? h.counts[beltIdx][lvlIdx] || 0 : 0))
+    }));
+    const card = document.createElement('div');
+    card.className = 'chart-card';
+    card.innerHTML = '<div class="chart-card-title">' + lvl + '</div>' + svgLineChart(seriesList, xLabels, tooltipLabels, 320, 170);
+    grid.appendChild(card);
+  });
+
+  // Carte "Tous niveaux confondus" : une courbe par couleur de ceinture (somme des niveaux)
+  const totalSeries = belts.map((b, beltIdx) => ({
+    color: beltColors[beltIdx],
+    values: history.map(h => (h.counts[beltIdx] || []).reduce((a, v) => a + (v || 0), 0))
+  }));
+  const totalCard = document.createElement('div');
+  totalCard.className = 'chart-card total-chart';
+  totalCard.innerHTML = '<div class="chart-card-title">Tous niveaux confondus (CP à CM2)</div>' + svgLineChart(totalSeries, xLabels, tooltipLabels, 680, 200);
+  grid.appendChild(totalCard);
+}
+
+renderLois();
+renderBelts();
+loadCounters();
+</script>
+
+
+</body></html>
